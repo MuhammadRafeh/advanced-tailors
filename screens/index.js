@@ -43,7 +43,7 @@ const index = props => {
                     </Text>
                 </View>
             </View>
-            <View style={{ flex: 0.1, backgroundColor: 'white', top: -90, borderTopLeftRadius: 10, borderTopRightRadius: 10 }}>
+            <View style={{ flex: 0.1, backgroundColor: 'white', top: -90, borderTopLeftRadius: 7, borderTopRightRadius: 7 }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center', top: -10 }}>
 
                     <Card style={{ width: '45%' }} />
