@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { Image, Text, View, StyleSheet } from 'react-native';
 import Video from 'react-native-video';
+import Card from '../components/Card';
 
 const index = props => {
     const player = useRef(null);
@@ -19,7 +20,7 @@ const index = props => {
                     style={styles.backgroundVideo} />
                 <View style={{ position: 'absolute', bottom: 185, width: '100%', left: 20 }}>
                     <Text style={{ color: 'white', fontSize: 40, fontWeight: 'bold' }} numberOfLines={1} adjustsFontSizeToFit={true}>
-                        Shop n Stich
+                        AR's Attire
                         <Text style={{ color: 'orange', fontSize: 85 }}>
                             .
                         </Text>
@@ -42,10 +43,12 @@ const index = props => {
                     </Text>
                 </View>
             </View>
-            <View style={{ flex: 0.1, backgroundColor: 'white', top: -90, borderTopLeftRadius: 20, borderTopRightRadius: 20 }}>
-                <Text>
-                    asd
-                </Text>
+            <View style={{ flex: 0.1, backgroundColor: 'white', top: -90, borderTopLeftRadius: 10, borderTopRightRadius: 10 }}>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center', top: -10 }}>
+
+                    <Card style={{ width: '45%' }} />
+                    <Card style={{ width: '45%' }} />
+                </View>
             </View>
         </View>
     );
