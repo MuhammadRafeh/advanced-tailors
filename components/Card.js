@@ -1,14 +1,19 @@
 import React from 'react';
-import { Text, View, StyleSheet, Dimensions } from 'react-native';
+import { Text, View, StyleSheet, Dimensions, Image } from 'react-native';
 
 const { height } = Dimensions.get('window');
 
 const Card = props => { //text | image
     return (
         <View style={[styles.card, props.style]}>
-            <Text>
-                sad
-            </Text>
+            <View style={{flex: 0.8, backgroundColor: '#f0eeeb'}}>
+                <Image source={props.image} style={{width: '100%', height: '100%'}} resizeMode={'contain'}/>
+            </View>
+            <View style={{flex: 0.2, alignItems: 'center', justifyContent: 'center'}}>
+                <Text style={{fontSize: 18, letterSpacing: -0.5, top: -3, color: 'black'}}>
+                    {props.text}
+                </Text>
+            </View>
         </View>
     );
 }
@@ -19,7 +24,9 @@ const styles = StyleSheet.create({
     card: {
         height: height / 5.8,
         width: '100%',
-        backgroundColor: 'green',
-        borderRadius: 5
+        borderRadius: 5,
+        backgroundColor: 'white',
+        elevation: 5,
+        overflow: 'hidden'
     }
 });

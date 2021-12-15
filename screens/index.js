@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Image, Text, View, StyleSheet } from 'react-native';
+import { Image, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import Video from 'react-native-video';
 import Card from '../components/Card';
 
@@ -46,8 +46,11 @@ const index = props => {
             <View style={{ flex: 0.1, backgroundColor: 'white', top: -90, borderTopLeftRadius: 7, borderTopRightRadius: 7 }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center', top: -10 }}>
 
-                    <Card style={{ width: '45%' }} />
-                    <Card style={{ width: '45%' }} />
+                    
+
+                        <Card style={{ width: '45%' }} text={'Find a service'} image={require('../assets/service.png')} />
+                    
+                    <Card style={{ width: '45%' }} text={'Become a tailor'} image={require('../assets/tailor.png')} />
                 </View>
             </View>
         </View>
