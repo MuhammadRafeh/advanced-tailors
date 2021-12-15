@@ -17,10 +17,26 @@ const index = props => {
                     // onEnd={() => { player.current.refs.node.seek(0) }}
                     resizeMode={'contain'}
                     style={styles.backgroundVideo} />
-                <View style={{ position: 'absolute', bottom: 180, width: '100%', left: 20 }}>
-                    <Text style={{ color: 'white', fontSize: 40 }} numberOfLines={1} adjustsFontSizeToFit={true}>
+                <View style={{ position: 'absolute', bottom: 190, width: '100%', left: 20 }}>
+                    <Text style={{ color: 'white', fontSize: 40, fontWeight: 'bold' }} numberOfLines={1} adjustsFontSizeToFit={true}>
                         Shop n Stich
-                        <Text style={{ color: 'orange', fontSize: 120 }}>
+                        <Text style={{ color: 'orange', fontSize: 85 }}>
+                            .
+                        </Text>
+                    </Text>
+                </View>
+                <View style={{ position: 'absolute', bottom: 140, width: '100%', left: 20 }}>
+                    <Text style={{ color: 'white', fontSize: 30, letterSpacing: 1 }}>
+                        Get Your Clothes
+                        <Text style={{ fontSize: 40 }}>
+                            .
+                        </Text>
+                    </Text>
+                </View>
+                <View style={{ position: 'absolute', bottom: 100, width: '100%', left: 20 }}>
+                    <Text style={{ color: 'white', fontSize: 30, letterSpacing: 1 }}>
+                        Done By Tailors
+                        <Text style={{ fontSize: 40 }}>
                             .
                         </Text>
                     </Text>
