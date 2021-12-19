@@ -14,7 +14,6 @@ const Login = props => {
             behavior={Platform.OS === "ios" ? "padding" : "height"}
             style={styles.screen}
         >
-            {/* <View style={styles.screen}> */}
             <View style={styles.firstRow}>
                 <View style={{ flex: 1 }}>
                     <View style={{ height: 25 }}>
