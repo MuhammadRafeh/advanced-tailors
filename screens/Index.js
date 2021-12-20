@@ -45,10 +45,10 @@ const Index = props => {
             <View style={{ flex: 0.1, backgroundColor: 'white', top: -90, borderTopLeftRadius: 7, borderTopRightRadius: 7 }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center', top: -10 }}>
                     <Card style={{ width: '45%' }} text={'Find a service'} image={require('../assets/service.png')} />
-                    <Card style={{ width: '45%' }} text={'Become a tailor'} image={require('../assets/tailor.png')} />
+                    <Card style={{ width: '45%' }} text={'Become a tailor'} image={require('../assets/tailor.png')} onPress={() => props.navigation.navigate('BecomeTailor')} />
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginHorizontal: 17 }}>
-                    <TouchableOpacity onPress={() => props.navigation.navigate('LoginModal')}>
+                    <TouchableOpacity onPress={() => props.navigation.navigate('Login')}>
                         <Text style={{ color: 'orange', fontSize: 16 }}>Sign In</Text>
                     </TouchableOpacity>
                     <TouchableOpacity>

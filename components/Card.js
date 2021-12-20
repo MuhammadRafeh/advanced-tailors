@@ -5,7 +5,7 @@ const { height } = Dimensions.get('window');
 
 const Card = props => { //text | image
     return (
-        <TouchableOpacity style={[styles.card, props.style]}>
+        <TouchableOpacity style={[styles.card, props.style]} onPress={props.onPress}>
             <View style={{ flex: 0.8, backgroundColor: '#f0eeeb', justifyContent: 'center' }}>
                 <Image source={props.image} style={{ width: '100%', height: '90%' }} resizeMode={'contain'} />
             </View>

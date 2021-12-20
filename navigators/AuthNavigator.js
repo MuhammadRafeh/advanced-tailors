@@ -1,6 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import LoginModal from '../models/LoginModal';
+import BecomeTailor from '../models/BecomeTailor';
+import Login from '../models/Login';
 import Index from '../screens/Index';
 
 const RootStack = createStackNavigator();
@@ -12,7 +13,8 @@ function StartNavigator() {
                 <RootStack.Screen name="Index" component={Index} options={{ headerShown: false }} />
             </RootStack.Group>
             <RootStack.Group screenOptions={{ presentation: 'modal' }}>
-                <RootStack.Screen name="LoginModal" component={LoginModal} options={{ headerShown: false }} />
+                <RootStack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+                <RootStack.Screen name="BecomeTailor" component={BecomeTailor} options={{ headerShown: false }} />
             </RootStack.Group>
         </RootStack.Navigator>
     );
