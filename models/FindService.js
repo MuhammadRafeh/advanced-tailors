@@ -6,7 +6,7 @@ import Services from '../components/Services';
 import Steps from '../components/Steps';
 
 const FindService = props => {
-    const services = ['Construction', 'Construction', 'Construction', 'Construction', 'Construction', 'Construction', 'Construction', 'Construction', 'Construction', 'Construction', 'Construction']
+    const services = ['Construction', 'Construction', 'Construction', 'Construction', 'Construction']
     return (
         <View style={{ flex: 1 }}>
             <View style={{ height: 55, alignItems: 'center', justifyContent: 'center', marginTop: 20 }}>
