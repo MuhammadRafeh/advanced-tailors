@@ -1,12 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View, TouchableOpacity, Image, TextInput, ScrollView } from 'react-native';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Button from '../components/Button';
 import Services from '../components/Services';
 import Steps from '../components/Steps';
+const services = [
+    { id: 0, title: 'Sewing', image: require('../assets/sewing.png') },
+    { id: 1, title: 'Altering', image: require('../assets/sewing.png') },
+    { id: 2, title: 'Repairing', image: require('../assets/sewing.png') },
+    { id: 3, title: 'Modifying', image: require('../assets/sewing.png') }
+]
 
 const FindService = props => {
-    const services = ['Construction', 'Construction', 'Construction', 'Construction', 'Construction']
+
+    const [selected, setSelelcted] = useState([]); //id's
+
+    const handlePressService = id => {
+        if (!selected.includes(id)) {
+            setSelelcted([...selected, id])
+        } else {
+            setSelelcted(selected.filter(item => item != id));
+        }
+    }
+
     return (
         <View style={{ flex: 1 }}>
             <View style={{ height: 55, alignItems: 'center', justifyContent: 'center', marginTop: 20 }}>
@@ -34,12 +51,15 @@ const FindService = props => {
                     </View>
 
                     <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginHorizontal: 10, justifyContent: 'space-between' }}>
-                        {services.map((item, index) => {
+                        {services.map((item) => {
                             return (
                                 <Services
-                                    key={index}
-                                    title={item}
-                                    index={index}
+                                    isSelected={selected.includes(item.id)}
+                                    key={item.id}
+                                    title={item.title}
+                                    index={item.id}
+                                    onPress={handlePressService.bind(null, item.id)}
+                                    image={item.image}
                                 />
                             )
                         })}
@@ -49,7 +69,7 @@ const FindService = props => {
             </View>
 
             <View style={{ paddingHorizontal: 20, flex: 0.1, justifyContent: 'center', backgroundColor: '#FAF9F6', elevation: 8 }}>
-                <Button label={'Continue'} onPress={() => props.navigation.navigate('SignupModel', { fromSeller: true })} />
+                <Button label={'Continue'} onPress={() => props.navigation.navigate('SignupModel')} />
             </View>
 
         </View>
