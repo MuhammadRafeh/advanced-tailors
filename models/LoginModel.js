@@ -55,6 +55,9 @@ const LoginModal = props => {
                         onFocus={() => {
                             setSelected('email')
                         }}
+                        onBlur={() => {
+                            setSelected('no')
+                        }}
                     />
                 </View>
 
@@ -65,6 +68,9 @@ const LoginModal = props => {
                         placeholderTextColor={selected == 'password' ? colors.primary : 'grey'}
                         onFocus={() => {
                             setSelected('password')
+                        }}
+                        onBlur={() => {
+                            setSelected('no')
                         }}
                     />
                 </View>
