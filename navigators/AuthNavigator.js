@@ -4,6 +4,7 @@ import BecomeTailor from '../models/BecomeTailor';
 import LoginModel from '../models/LoginModel';
 import SignupModel from '../models/SignupModel';
 import Forgot from '../screens/Auth/Forgot';
+import Signup from '../screens/Auth/Signup';
 import Index from '../screens/Index';
 
 const RootStack = createStackNavigator();
@@ -14,6 +15,7 @@ function StartNavigator() {
             <RootStack.Group >
                 <RootStack.Screen name="Index" component={Index} options={{ headerShown: false }} />
                 <RootStack.Screen name="Forgot Password" component={Forgot} />
+                <RootStack.Screen name="Signup" component={Signup} options={{ headerTitle: "Sign Up" }} />
             </RootStack.Group>
             <RootStack.Group screenOptions={{ presentation: 'modal', headerShown: false }}>
                 <RootStack.Screen name="LoginModel" component={LoginModel} />

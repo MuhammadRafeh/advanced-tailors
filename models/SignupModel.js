@@ -31,7 +31,7 @@ const SignupModel = props => {
 
                 <Button label={'Continue with Facebook'} style={{ marginVertical: 4, backgroundColor: '#002e78' }} textStyle={{ fontWeight: 'normal' }} />
                 <Button label={'Continue with Google'} style={{ marginVertical: 4, backgroundColor: '#3f80e8' }} textStyle={{ fontWeight: 'normal' }} />
-                <Button label={'Sign Up with Email'} style={{ marginVertical: 4, backgroundColor: 'orange' }} textStyle={{ fontWeight: 'normal' }} />
+                <Button label={'Sign Up with Email'} onPress={() => props.navigation.navigate('Signup')} style={{ marginVertical: 4, backgroundColor: 'orange' }} textStyle={{ fontWeight: 'normal' }} />
 
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginVertical: 20, marginRight: 2 }}>
                     <TouchableOpacity onPress={() => props.navigation.navigate('LoginModel')}>

@@ -6,6 +6,9 @@ import colors from '../constants/colors';
 
 const LoginModal = props => {
     const [selected, setSelected] = useState('no');
+    const onBlur = () => {
+        setSelected('no');
+    }
     return (
         <View style={{ flex: 1 }}>
             <View style={{ height: 55, alignItems: 'center', justifyContent: 'center', marginTop: 20 }}>
@@ -55,9 +58,7 @@ const LoginModal = props => {
                         onFocus={() => {
                             setSelected('email')
                         }}
-                        onBlur={() => {
-                            setSelected('no')
-                        }}
+                        onBlur={onBlur}
                     />
                 </View>
 
@@ -69,9 +70,7 @@ const LoginModal = props => {
                         onFocus={() => {
                             setSelected('password')
                         }}
-                        onBlur={() => {
-                            setSelected('no')
-                        }}
+                        onBlur={onBlur}
                     />
                 </View>
 
