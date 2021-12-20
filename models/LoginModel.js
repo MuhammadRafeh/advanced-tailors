@@ -63,11 +63,11 @@ const LoginModal = props => {
 
                 <Button label={'Continue'} style={{ marginBottom: 20 }} />
 
-                <View style={{ marginBottom: 24, alignItems: 'flex-end' }}>
+                <TouchableOpacity style={{ marginBottom: 24, alignItems: 'flex-end' }} onPress={() => props.navigation.navigate('Forgot Password')}>
                     <Text style={{ color: 'orange', fontWeight: 'bold' }}>
                         Forgot Password
                     </Text>
-                </View>
+                </TouchableOpacity>
 
             </ScrollView>
         </View>

@@ -48,10 +48,10 @@ const Index = props => {
                     <Card style={{ width: '45%' }} text={'Become a tailor'} image={require('../assets/tailor.png')} onPress={() => props.navigation.navigate('BecomeTailor')} />
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginHorizontal: 17 }}>
-                    <TouchableOpacity onPress={() => props.navigation.navigate('Login')}>
+                    <TouchableOpacity onPress={() => props.navigation.navigate('LoginModel')}>
                         <Text style={{ color: 'orange', fontSize: 16 }}>Sign In</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => props.navigation.navigate('SignupModel')}>
                         <Text style={{ color: 'orange', fontSize: 16 }}>Skip</Text>
                     </TouchableOpacity>
                 </View>

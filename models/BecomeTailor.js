@@ -27,7 +27,7 @@ const BecomeTailor = props => {
                         We'll get you the clients. We'll make earning easy.
                     </Text>
                 </View>
-                
+
                 <Steps
                     icon={'ios-document-outline'}
                     title={'Complete your Profile'}
@@ -37,16 +37,16 @@ const BecomeTailor = props => {
                     icon={'paper-plane-outline'}
 
                     title={'Deliver your stiched work'}
-                    description={"We'll deliver offline after you have done client clothes stiches."}
+                    description={"We'll deliver offline after you have done with the client's order."}
                 />
                 <Steps
                     icon={'cloud-done-outline'}
 
                     title={'Get paid'}
-                    description={"You will receive your payment after order completion. It's that simple."}
+                    description={"Get your payment through easypaisa or door to door. It's that simple."}
                 />
 
-                <Button label={'Continue'} style={{ marginTop: 40 }} />
+                <Button label={'Continue'} style={{ marginTop: 40 }} onPress={() => props.navigation.navigate('SignupModel', {fromSeller: true})} />
 
             </ScrollView>
         </View>
