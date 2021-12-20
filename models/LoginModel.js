@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View, TouchableOpacity, Image, TextInput, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Button from '../components/Button';
+import colors from '../constants/colors';
 
 const LoginModal = props => {
+    const [selected, setSelected] = useState('no');
     return (
         <View style={{ flex: 1 }}>
             <View style={{ height: 55, alignItems: 'center', justifyContent: 'center', marginTop: 20 }}>
@@ -48,16 +50,22 @@ const LoginModal = props => {
                 <View style={{ marginBottom: 40 }}>
                     <TextInput
                         placeholder='Email or username'
-                        style={{ color: 'black', borderBottomWidth: 1, borderColor: 'grey', paddingBottom: 0, paddingLeft: 0, fontSize: 16 }}
-                        placeholderTextColor={'grey'}
+                        style={{ color: 'black', borderBottomWidth: 1, borderColor: selected == 'email' ? colors.primary : 'grey', paddingBottom: 0, paddingLeft: 0, fontSize: 16 }}
+                        placeholderTextColor={selected == 'email' ? colors.primary : 'grey'}
+                        onFocus={() => {
+                            setSelected('email')
+                        }}
                     />
                 </View>
 
                 <View style={{ marginBottom: 30 }}>
                     <TextInput
                         placeholder='Password'
-                        style={{ color: 'black', borderBottomWidth: 1, borderColor: 'grey', paddingBottom: 0, paddingLeft: 0, fontSize: 16 }}
-                        placeholderTextColor={'grey'}
+                        style={{ color: 'black', borderBottomWidth: 1, borderColor: selected == 'password' ? colors.primary : 'grey', paddingBottom: 0, paddingLeft: 0, fontSize: 16 }}
+                        placeholderTextColor={selected == 'password' ? colors.primary : 'grey'}
+                        onFocus={() => {
+                            setSelected('password')
+                        }}
                     />
                 </View>
 
