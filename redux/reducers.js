@@ -8,7 +8,7 @@ const initialAuthState = {
     email: '',
     password: '',
     isAuth: false,
-    isUserSkippedAuth: false
+    whoIsUser: 'guest' //guest | tailor | customer
 }
 
 const authReducer = (state = initialAuthState, action) => {
@@ -17,7 +17,7 @@ const authReducer = (state = initialAuthState, action) => {
             return {
                 email: action.payload.email,
                 isAuth: action.payload.password,
-                isUserSkippedAuth: action.payload.isSkip ? true : false,
+                whoIsUser: action.payload.isSkip == 'guest' ? 'guest' : action.payload.isSkip == 'tailor' ? 'tailor': action.payload.isSkip == 'customer' && 'customer',
                 isAuth: true,
             }
         case LOGOUT:

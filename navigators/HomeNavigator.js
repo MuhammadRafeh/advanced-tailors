@@ -1,20 +1,13 @@
-import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
 function HomeNavigator() {
     return (
-        <Stack.Navigator
-            initialRouteName="Home"
-            screenOptions={{
-                headerMode: 'screen',
-                headerTintColor: 'white',
-                headerStyle: { backgroundColor: 'tomato' },
-            }}
-        >
-            <Stack.Screen name="Home" component={Home} options={{ title: 'Awesome app' }} />
-        </Stack.Navigator>
+        <Tab.Navigator>
+            <Tab.Screen name="Home" component={} />
+            <Tab.Screen name="Settings" component={SettingsScreen} />
+        </Tab.Navigator>
     );
 }
 

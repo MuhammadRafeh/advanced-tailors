@@ -42,7 +42,7 @@ const SignupModel = props => {
                     </TouchableOpacity>
                     {
                         !fromSeller && (
-                            <TouchableOpacity onPress={() => { props.navigation.navigate('SignupModel'); dispatch(authenticate('', '', true)) }}>
+                            <TouchableOpacity onPress={() => { props.navigation.navigate('SignupModel'); dispatch(authenticate('', '', 'guest')) }}>
                                 <Text style={{ color: 'orange', fontSize: 15 }}>Skip</Text>
                             </TouchableOpacity>
                         )

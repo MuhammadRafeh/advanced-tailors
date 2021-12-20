@@ -8,7 +8,7 @@ const Index = props => {
     return (
         <View style={{ flex: 1, backgroundColor: 'white' }}>
             <View style={{ flex: 0.9, top: -20, backgroundColor: 'black' }}>
-                <Video source={require('../assets/tailor.mp4')}
+                <Video source={require('../assets/tailor2.mp4')}
                     ref={(ref) => {
                         player.current = ref;
                     }}
@@ -66,6 +66,6 @@ const styles = StyleSheet.create({
     backgroundVideo: {
         width: '100%',
         height: '100%',
-        opacity: 0.9
+        opacity: 0.6
     },
 });
