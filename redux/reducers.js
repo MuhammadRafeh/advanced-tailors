@@ -7,7 +7,8 @@ import {
 const initialAuthState = {
     email: '',
     password: '',
-    isAuth: false
+    isAuth: false,
+    isUserSkippedAuth: false
 }
 
 const authReducer = (state = initialAuthState, action) => {
@@ -16,7 +17,8 @@ const authReducer = (state = initialAuthState, action) => {
             return {
                 email: action.payload.email,
                 isAuth: action.payload.password,
-                isAuth: true
+                isUserSkippedAuth: action.payload.isSkip ? true : false,
+                isAuth: true,
             }
         case LOGOUT:
             return initialAuthState

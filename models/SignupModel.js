@@ -1,9 +1,12 @@
 import React from 'react';
 import { Text, View, TouchableOpacity, Image, TextInput, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useDispatch } from 'react-redux';
 import Button from '../components/Button';
+import { authenticate } from '../redux/actions';
 
 const SignupModel = props => {
+    const dispatch = useDispatch();
     const fromSeller = props?.route?.params?.fromSeller;
     return (
         <View style={{ flex: 1 }}>
@@ -39,7 +42,7 @@ const SignupModel = props => {
                     </TouchableOpacity>
                     {
                         !fromSeller && (
-                            <TouchableOpacity onPress={() => props.navigation.navigate('SignupModel')}>
+                            <TouchableOpacity onPress={() => { props.navigation.navigate('SignupModel'); dispatch(authenticate('', '', true)) }}>
                                 <Text style={{ color: 'orange', fontSize: 15 }}>Skip</Text>
                             </TouchableOpacity>
                         )

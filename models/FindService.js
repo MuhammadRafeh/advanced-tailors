@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Text, View, TouchableOpacity, Image, TextInput, ScrollView } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -16,13 +16,13 @@ const FindService = props => {
 
     const [selected, setSelelcted] = useState([]); //id's
 
-    const handlePressService = id => {
+    const handlePressService = useCallback((id) => {
         if (!selected.includes(id)) {
             setSelelcted([...selected, id])
         } else {
             setSelelcted(selected.filter(item => item != id));
         }
-    }
+    }, [selected])
 
     return (
         <View style={{ flex: 1 }}>
