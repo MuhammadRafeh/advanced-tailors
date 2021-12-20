@@ -12,16 +12,16 @@ const Signup = props => {
         <View style={{ flex: 1, paddingTop: 18, marginTop: 2, paddingHorizontal: 20, backgroundColor: 'white' }}>
             <TextInput
                 placeholder='Email'
-                style={{ marginBottom: 30, color: 'black', borderBottomWidth: 1, borderColor: isEmailValid ? selected == 'email' ? colors.primary: 'grey' : 'red', paddingBottom: 0, paddingLeft: 0, }}
-                placeholderTextColor={ isEmailValid ? selected == 'email' ? colors.primary: 'grey' : 'red'}
+                style={{ marginBottom: 30, color: 'black', borderBottomWidth: 1, borderColor: isEmailValid ? selected == 'email' ? colors.primary : 'grey' : 'red', paddingBottom: 0, paddingLeft: 0, }}
+                placeholderTextColor={isEmailValid ? selected == 'email' ? colors.primary : 'grey' : 'red'}
                 autoFocus={true}
                 onFocus={setSelected.bind(null, 'email')}
                 onBlur={setSelected.bind(null, 'no')}
             />
             <TextInput
                 placeholder='Username'
-                style={{ color: 'black', borderBottomWidth: 1, borderColor: isUsernameValid ? selected == 'username' ? colors.primary: 'grey' : 'red', paddingBottom: 0, paddingLeft: 0, }}
-                placeholderTextColor={isUsernameValid ? selected == 'username' ? colors.primary: 'grey' : 'red'}
+                style={{ color: 'black', borderBottomWidth: 1, borderColor: isUsernameValid ? selected == 'username' ? colors.primary : 'grey' : 'red', paddingBottom: 0, paddingLeft: 0, }}
+                placeholderTextColor={isUsernameValid ? selected == 'username' ? colors.primary : 'grey' : 'red'}
                 onFocus={setSelected.bind(null, 'username')}
                 onBlur={setSelected.bind(null, 'no')}
             />
@@ -34,8 +34,8 @@ const Signup = props => {
             </View>
             <TextInput
                 placeholder='Password'
-                style={{ color: 'black', borderBottomWidth: 1, borderColor: isPasswordValid ? selected == 'password' ? colors.primary: 'grey' : 'red', paddingBottom: 0, paddingLeft: 0, }}
-                placeholderTextColor={isPasswordValid ? selected == 'password' ? colors.primary: 'grey' : 'red'}
+                style={{ color: 'black', borderBottomWidth: 1, borderColor: isPasswordValid ? selected == 'password' ? colors.primary : 'grey' : 'red', paddingBottom: 0, paddingLeft: 0, }}
+                placeholderTextColor={isPasswordValid ? selected == 'password' ? colors.primary : 'grey' : 'red'}
                 onFocus={setSelected.bind(null, 'password')}
                 onBlur={setSelected.bind(null, 'no')}
             />
@@ -47,7 +47,7 @@ const Signup = props => {
                 </Text>
             </View>
 
-            <Button label={'Send'} />
+            <Button label={'Sign Up'} />
         </View>
     );
 }

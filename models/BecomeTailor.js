@@ -46,7 +46,7 @@ const BecomeTailor = props => {
                     description={"Get your payment through easypaisa or door to door. It's that simple."}
                 />
 
-                <Button label={'Continue'} style={{ marginTop: 40 }} onPress={() => props.navigation.navigate('SignupModel', {fromSeller: true})} />
+                <Button label={'Continue'} style={{ marginTop: 40 }} onPress={() => props.navigation.navigate('SignupModel', { fromSeller: true })} />
 
             </ScrollView>
         </View>
