@@ -20,8 +20,8 @@ const LoginModal = props => {
                 </TouchableOpacity>
             </View>
             <ScrollView contentContainerStyle={{ flex: 1, justifyContent: 'flex-end', marginHorizontal: 20 }}>
-                <Image />
-                <View style={{ marginVertical: 10 }}>
+                <Image  style={{width: '50%'}} resizeMode={'contain'} />
+                <View style={{ marginBottom: 10 }}>
                     <Text style={{ fontWeight: 'bold', fontSize: 20, color: 'black' }}>
                         Welcome back
                     </Text>

@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import AuthNavigator from './navigators/AuthNavigator';
 import { Provider, useSelector } from "react-redux";
 import store from './redux/store';
+import HomeNavigator from './navigators/HomeNavigator';
 
 function App() {
     const isAuth = useSelector(state => state.auth.isAuth);
@@ -17,9 +18,7 @@ function App() {
             }
             {
                 isAuth && (
-                    <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1, backgroundColor: 'white' }}>
-                        <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 20 }}>Successfully Login!</Text>
-                    </View>
+                    <HomeNavigator />
                 )
             }
         </NavigationContainer>
