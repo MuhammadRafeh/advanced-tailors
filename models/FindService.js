@@ -15,39 +15,46 @@ const FindService = props => {
                     </Text>
                 </TouchableOpacity>
             </View>
-            <ScrollView contentContainerStyle={{ flex: 1, justifyContent: 'flex-start', marginTop: 35, marginHorizontal: 20 }}>
-                <View style={{ marginVertical: 10, width: '90%' }}>
-                    <Text style={{ fontWeight: 'bold', fontSize: 20, color: 'black' }}>
-                        Choose the services that best suite what you are interested in
-                    </Text>
-                </View>
-                <View style={{ marginBottom: 8, marginTop: 9 }}>
-                    <Text style={{ letterSpacing: -0.2, fontSize: 14, color: 'grey' }} adjustsFontSizeToFit={true} numberOfLines={1}>
-                        At least select one.
-                    </Text>
-                </View>
+            <View style={{ flex: 0.9 }}>
 
-                <Steps
-                    icon={'ios-document-outline'}
-                    title={'Complete your Profile'}
-                    description={'Tell about your stiches history and skills to global audience and start earning more.'}
-                />
-                <Steps
-                    icon={'paper-plane-outline'}
+                <ScrollView contentContainerStyle={{ justifyContent: 'flex-start', marginTop: 35, marginHorizontal: 20 }}>
+                    <View style={{ marginVertical: 10, width: '90%' }}>
+                        <Text style={{ fontWeight: 'bold', fontSize: 20, color: 'black' }}>
+                            Choose the services that best suite what you are interested in
+                        </Text>
+                    </View>
+                    <View style={{ marginBottom: 8, marginTop: 9 }}>
+                        <Text style={{ letterSpacing: -0.2, fontSize: 14, color: 'grey' }} adjustsFontSizeToFit={true} numberOfLines={1}>
+                            At least select one.
+                        </Text>
+                    </View>
 
-                    title={'Deliver your stiched work'}
-                    description={"We'll deliver offline after you have done with the client's order."}
-                />
-                <Steps
-                    icon={'cloud-done-outline'}
+                    <Steps
+                        icon={'ios-document-outline'}
+                        title={'Complete your Profile'}
+                        description={'Tell about your stiches history and skills to global audience and start earning more.'}
+                    />
+                    <Steps
+                        icon={'paper-plane-outline'}
 
-                    title={'Get paid'}
-                    description={"Get your payment through easypaisa or door to door. It's that simple."}
-                />
+                        title={'Deliver your stiched work'}
+                        description={"We'll deliver offline after you have done with the client's order."}
+                    />
+                    <Steps
+                        icon={'cloud-done-outline'}
 
-                <Button label={'Continue'} style={{ marginTop: 40 }} onPress={() => props.navigation.navigate('SignupModel', { fromSeller: true })} />
+                        title={'Get paid'}
+                        description={"Get your payment through easypaisa or door to door. It's that simple."}
+                    />
 
-            </ScrollView>
+
+                </ScrollView>
+            </View>
+
+            <View style={{ paddingHorizontal: 20, flex: 0.1, justifyContent: 'center' }}>
+                <Button label={'Continue'} onPress={() => props.navigation.navigate('SignupModel', { fromSeller: true })} />
+            </View>
+
         </View>
     );
 }
