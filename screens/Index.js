@@ -7,15 +7,14 @@ const Index = props => {
     const player = useRef(null);
     return (
         <View style={{ flex: 1, backgroundColor: 'white' }}>
-            <View style={{ flex: 0.9, top: -20 }}>
-                <Video source={require('../assets/tailor.mp4')}   // Can be a URL or a local file.
+            <View style={{ flex: 0.9, top: -20, backgroundColor: 'black' }}>
+                <Video source={require('../assets/tailor.mp4')}
                     ref={(ref) => {
                         player.current = ref;
                     }}
-                    paused={false}                                 // Store reference
+                    paused={false}
                     repeat={true}
-                    onBuffer={() => { }}                // Callback when 
-                    // onEnd={() => { player.current.refs.node.seek(0) }}
+                    onBuffer={() => { }}
                     resizeMode={'contain'}
                     style={styles.backgroundVideo} />
                 <View style={{ position: 'absolute', bottom: 185, width: '100%', left: 20 }}>
@@ -49,7 +48,7 @@ const Index = props => {
                     <Card style={{ width: '45%' }} text={'Become a tailor'} image={require('../assets/tailor.png')} />
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginHorizontal: 17 }}>
-                    <TouchableOpacity onPress={props.setIsShowAuth.bind(null, true)}>
+                    <TouchableOpacity onPress={() => props.navigation.navigate('LoginModal')}>
                         <Text style={{ color: 'orange', fontSize: 16 }}>Sign In</Text>
                     </TouchableOpacity>
                     <TouchableOpacity>

@@ -5,7 +5,7 @@ const { height } = Dimensions.get('window');
 const Button = props => {
     return (
         <TouchableOpacity style={{...styles.button, ...props.style}} onPress={props.onPress}>
-            <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 18 }}>
+            <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 15 }}>
                 {props.label}
             </Text>
         </TouchableOpacity>
@@ -16,9 +16,9 @@ export default Button;
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: 'rgb(250,74,12)',
-        height: height / 11.6,
-        borderRadius: 29,
+        backgroundColor: 'orange',
+        height: 40,
+        borderRadius: 6,
         justifyContent: 'center',
         alignItems: 'center'
     }

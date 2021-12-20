@@ -32,7 +32,7 @@ const Login = props => {
                         </Text>
                     </View>
                     <View>
-                        <TextInput onChangeText={setPassword.bind(null)} style={{  width: '100%', borderBottomColor: 'rgb(121,121,121)', borderBottomWidth: 1, height: 40, color: 'black', top: -10, paddingLeft: -10  }} />
+                        <TextInput onChangeText={setPassword.bind(null)} style={{ width: '100%', borderBottomColor: 'rgb(121,121,121)', borderBottomWidth: 1, height: 40, color: 'black', top: -10, paddingLeft: -10 }} />
                     </View>
                     <View style={{ marginTop: 29 }}>
 

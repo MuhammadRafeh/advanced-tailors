@@ -17,7 +17,7 @@ const Signup = props => {
                         </Text>
                     </View>
                     <View>
-                        <TextInput onChangeText={(val) => { }} style={{  width: '100%', borderBottomColor: 'rgb(121,121,121)', borderBottomWidth: 1, height: 40, color: 'black', top: -10, paddingLeft: -10  }} />
+                        <TextInput onChangeText={(val) => { }} style={{ width: '100%', borderBottomColor: 'rgb(121,121,121)', borderBottomWidth: 1, height: 40, color: 'black', top: -10, paddingLeft: -10 }} />
                     </View>
                 </View>
                 <View style={{ flex: 2.3 }}>
@@ -26,13 +26,13 @@ const Signup = props => {
                             Password
                         </Text>
                     </View>
-                    <View  style={{ height: 25 }}>
+                    <View style={{ height: 25 }}>
                         <TextInput onChangeText={(val) => { }} style={{ width: '100%', borderBottomColor: 'rgb(121,121,121)', borderBottomWidth: 1, height: 40, color: 'black', top: -10, paddingLeft: -10 }} />
                     </View>
                 </View>
             </View>
             <View style={styles.lastRow}>
-                <Button label={'Sign-up'}/>
+                <Button label={'Sign-up'} />
             </View>
         </KeyboardAvoidingView>
 
