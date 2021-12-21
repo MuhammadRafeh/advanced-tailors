@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "256924485336",
+    "project_id": "shopnstich",
+    "storage_bucket": "shopnstich.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:256924485336:android:755dbc955bb16be1d479ad",
+        "android_client_info": {
+          "package_name": "com.techbuzz.shopnstich"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "256924485336-atml9sugadt1t1kt865vn70pb15jjj01.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlrE8-Hgu-tnYB-JwT6c-eOUL0zE7KbFQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "256924485336-atml9sugadt1t1kt865vn70pb15jjj01.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
