@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Text, KeyboardAvoidingView, View, StyleSheet, TextInput } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-
+import { Ionicons } from '@expo/vector-icons';
 import FoodItemNavigator from '../../navigators/FoodItemNavigator';
 import SearchModal from '../../components/SearchModal';
 
@@ -25,15 +24,15 @@ const Home = props => {
             style={styles.screen}
         >
             {
-                showModal && (<SearchModal setShowModal={setShowModal} />)
+                showModal && (<SearchModal setShowModal={setShowModal}/>)
             }
             <View style={{ flex: 1.2 }}>
                 <View>
                     <Text style={styles.label} adjustsFontSizeToFit={true} numberOfLines={1}>
-                        Exciting
+                        Delicious
                     </Text>
                     <Text style={[styles.label, { top: -5 }]} adjustsFontSizeToFit={true} numberOfLines={1}>
-                        clothes for you
+                        food for you
                     </Text>
                 </View>
                 <View style={{ marginTop: 20, flex: 1 }}>
@@ -64,8 +63,7 @@ const styles = StyleSheet.create({
     },
     label: {
         fontSize: 30,
-        fontWeight: 'bold',
-        color: 'black'
+        fontWeight: 'bold'
     },
     searchIcon: {
         position: 'absolute',

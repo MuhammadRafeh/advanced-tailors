@@ -1,22 +1,37 @@
 import React, { useState } from 'react';
-import { Text, View, TextInput } from 'react-native';
+import { Text, View, TextInput, Alert } from 'react-native';
 import Button from '../../components/Button';
 import colors from '../../constants/colors';
+import firebase from '@react-native-firebase/auth';
+// import firebase from '@react-native-firebase/app';
+
+// import firebase from 'firebase'
+// require('firebase/auth')
 
 const Signup = props => {
     const [selected, setSelected] = useState('email');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [isEmailValid, setIsEmailValid] = useState(true);
     const [isUsernameValid, setIsUsernameValid] = useState(true);
     const [isPasswordValid, setIsPasswordValid] = useState(true);
 
     const handleSignup = () => {
-
+        console.log(firebase.FacebookAuthProvider.credential('asd', 'asd'))
+        firebase.createUserWithEmailAndPassword(email, password).then((object) => {
+            dispatch(authenticate(object.user.uid, email, false, false));
+            object.user.sendEmailVerification();
+        }).catch(err => {
+            Alert.alert('Something went wrong', err.message, [{ text: 'Ok' }])
+        })
     }
 
     return (
         <View style={{ flex: 1, paddingTop: 18, marginTop: 2, paddingHorizontal: 20, backgroundColor: 'white' }}>
             <TextInput
                 placeholder='Email'
+                value={email}
+                onChangeText={setEmail}
                 style={{ color: 'black', borderBottomWidth: 1, borderColor: isEmailValid ? selected == 'email' ? colors.primary : 'grey' : 'red', paddingBottom: 0, paddingLeft: 0, }}
                 placeholderTextColor={isEmailValid ? selected == 'email' ? colors.primary : 'grey' : 'red'}
                 autoFocus={true}
@@ -32,6 +47,8 @@ const Signup = props => {
             </View>
             <TextInput
                 placeholder='Username'
+                value={password}
+                onChangeText={setPassword}
                 style={{ color: 'black', borderBottomWidth: 1, borderColor: isUsernameValid ? selected == 'username' ? colors.primary : 'grey' : 'red', paddingBottom: 0, paddingLeft: 0, }}
                 placeholderTextColor={isUsernameValid ? selected == 'username' ? colors.primary : 'grey' : 'red'}
                 onFocus={setSelected.bind(null, 'username')}
