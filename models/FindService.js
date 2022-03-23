@@ -69,7 +69,7 @@ const FindService = props => {
             </View>
 
             <View style={{ paddingHorizontal: 20, flex: 0.1, justifyContent: 'center', backgroundColor: '#FAF9F6', elevation: 8 }}>
-                <Button label={'Continue'} onPress={() => props.navigation.navigate('SignupModel')} />
+                <Button label={selected.length == 0 ? 'Skip' : 'Continue'} onPress={() => props.navigation.navigate('SignupModel')} />
             </View>
 
         </View>

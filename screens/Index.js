@@ -14,7 +14,6 @@ const Index = props => {
                     }}
                     paused={false}
                     repeat={true}
-                    onBuffer={() => { }}
                     resizeMode={'contain'}
                     style={styles.backgroundVideo} />
                 <View style={{ position: 'absolute', bottom: 185, width: '100%', left: 20 }}>
