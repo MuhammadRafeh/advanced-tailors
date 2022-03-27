@@ -5,7 +5,7 @@ const { height } = Dimensions.get('window');
 const Button = props => {
     return (
         <TouchableOpacity style={{ ...styles.button, ...props.style }} onPress={props.onPress}>
-            <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 15, ...props.textStyle, letterSpacing: 0.1 }}>
+            <Text style={{ color: 'white', fontSize: 17, ...props.textStyle, letterSpacing: 0.4, fontFamily: '1' }} numberOfLines={1} adjustsFontSizeToFit={true}>
                 {props.label}
             </Text>
         </TouchableOpacity>
