@@ -1,10 +1,7 @@
-import React, {useEffect} from 'react';
-import {Text, View} from 'react-native';
-import {GraphQLClient} from 'graphql-request';
-const graphcms = new GraphQLClient(
-  'https://api-ap-south-1.graphcms.com/v2/cl19f496qjynj01za3uut8cuf/master',
-);
-import {gql} from 'graphql-request';
+import React, { useEffect } from 'react';
+import { Text, View } from 'react-native';
+import { gql } from 'graphql-request';
+import graphcms from '../../graphCMS/graphCMS';
 
 const QUERY = gql`
   {
@@ -18,14 +15,14 @@ const QUERY = gql`
 
 const Home = props => {
   const getStaticProps = async () => {
-    const {posts} = await graphcms.request(QUERY);
+    const { posts } = await graphcms.request(QUERY);
     console.log(posts);
   };
 
   useEffect(() => {
     getStaticProps();
   }, []);
-  return <View style={{flex: 1}} />;
+  return <View style={{ flex: 1 }} />;
 };
 
 export default Home;
