@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Text, View, ScrollView, StyleSheet } from 'react-native';
 import { gql } from 'graphql-request';
 import graphcms from '../../graphCMS/graphCMS';
 
@@ -17,18 +17,39 @@ query MyQuery {
 }`;
 
 const Home = props => {
-  const [data, setData] = useState([]);
+  const [categories, setCategories] = useState([]);
   const getData = async () => {
-    const { posts } = await graphcms.request(QUERY);
-    setData(posts);
+    const { categories } = await graphcms.request(QUERY);
+    console.log(categories)
+    setCategories(categories);
   };
 
   useEffect(() => {
     getData();
   }, []);
   return (
-    <View>
-
+    <View style={styles.screen}>
+      {categories.map(category => (
+        <View key={category.name} style={{ padding: 10 }}>
+          <View>
+            <Text>
+              {category.name}
+            </Text>
+          </View>
+          <View>
+            <ScrollView horizontal>
+              {
+                category.collections.map(item => {
+                  console.log(item, 'asd')
+                  return (
+                    < View />
+                  )
+                })
+              }
+            </ScrollView>
+          </View>
+        </View>
+      ))}
     </View>
   )
 };
@@ -36,5 +57,7 @@ const Home = props => {
 export default Home;
 
 const styles = StyleSheet.create({
-
+  screen: {
+    flex: 1
+  }
 })
