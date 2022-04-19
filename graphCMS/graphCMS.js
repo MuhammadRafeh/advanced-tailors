@@ -1,6 +1,6 @@
 import { GraphQLClient } from 'graphql-request';
 const graphcms = new GraphQLClient(
-    'https://api-ap-south-1.graphcms.com/v2/cl19f496qjynj01za3uut8cuf/master',
+    'https://api-ap-south-1.graphcms.com/v2/cl1cftilp0ceg01wb0ncnht6i/master',
 );
 export default graphcms;
 

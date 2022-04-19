@@ -1,28 +1,40 @@
 import React, { useEffect } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import { gql } from 'graphql-request';
 import graphcms from '../../graphCMS/graphCMS';
 
 const QUERY = gql`
-  {
-    posts {
-      id
-      title
-      date
+query MyQuery {
+  categories {
+    name
+    collections {
+      name
+      varieties {
+        name
+      }
     }
   }
-`;
+}`;
 
 const Home = props => {
-  const getStaticProps = async () => {
+  const [data, setData] = useState([]);
+  const getData = async () => {
     const { posts } = await graphcms.request(QUERY);
-    console.log(posts);
+    setData(posts);
   };
 
   useEffect(() => {
-    getStaticProps();
+    getData();
   }, []);
-  return <View style={{ flex: 1 }} />;
+  return (
+    <View>
+
+    </View>
+  )
 };
 
 export default Home;
+
+const styles = StyleSheet.create({
+
+})
