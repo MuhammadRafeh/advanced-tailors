@@ -14,9 +14,9 @@ import Services from '../components/Services';
 import Steps from '../components/Steps';
 const services = [
   {id: 0, title: 'Sewing', image: require('../assets/sewing.png')},
-  {id: 1, title: 'Altering', image: require('../assets/sewing.png')},
-  {id: 2, title: 'Repairing', image: require('../assets/sewing.png')},
-  {id: 3, title: 'Modifying', image: require('../assets/sewing.png')},
+  {id: 1, title: 'Altering', image: require('../assets/altering.png')},
+  {id: 2, title: 'Repairing', image: require('../assets/reparing.jpg')},
+  {id: 3, title: 'Modifying', image: require('../assets/modifying.png')},
 ];
 
 const FindService = props => {
