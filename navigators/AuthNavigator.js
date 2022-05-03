@@ -1,4 +1,4 @@
-import {createStackNavigator} from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import BecomeTailor from '../models/BecomeTailor';
 import FindService from '../models/FindService';
@@ -17,17 +17,17 @@ function StartNavigator() {
         <RootStack.Screen
           name="Index"
           component={Index}
-          options={{headerShown: false}}
+          options={{ headerShown: false }}
         />
         <RootStack.Screen name="Forgot Password" component={Forgot} />
         <RootStack.Screen
           name="Signup"
           component={Signup}
-          options={{headerTitle: 'Sign Up'}}
+          options={{ headerTitle: 'Sign Up' }}
         />
       </RootStack.Group>
       <RootStack.Group
-        screenOptions={{presentation: 'modal', headerShown: false}}>
+        screenOptions={{ presentation: 'modal', headerShown: false }}>
         <RootStack.Screen name="LoginModel" component={LoginModel} />
         <RootStack.Screen name="BecomeTailor" component={BecomeTailor} />
         <RootStack.Screen name="FindService" component={FindService} />

@@ -1,9 +1,8 @@
-import React, {useState} from 'react';
-import {Text, View} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 
 import AuthNavigator from './navigators/AuthNavigator';
-import {Provider, useSelector} from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 import store from './redux/store';
 import HomeNavigator from './navigators/HomeNavigator';
 
