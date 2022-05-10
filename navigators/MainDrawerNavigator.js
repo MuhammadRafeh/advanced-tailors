@@ -25,6 +25,7 @@ import colors from '../constants/colors';
 import { useSelector } from 'react-redux';
 
 function CustomDrawerContent(props) {
+    const whoIsLogin = useSelector(state => state.auth.whoIsUser);
     return (
         <>
             <DrawerContentScrollView {...props}>
@@ -36,7 +37,7 @@ function CustomDrawerContent(props) {
             </DrawerContentScrollView>
 
             <DrawerItem
-                label={`Sign-out`} onPress={async () => {
+                label={whoIsLogin == 'guest' ? 'Leave' : `Sign-out`} onPress={async () => {
 
                 }}
                 style={{ bottom: 40 }}
@@ -46,7 +47,7 @@ function CustomDrawerContent(props) {
                 inactiveTintColor={'white'}
                 icon={({ size }) => {
                     return <MaterialIcons
-                        style={{ left: width / 5 }}
+                        style={{ left: whoIsLogin == 'guest' ? width / 6.1 : width / 5 }}
                         name="arrow-right-alt"
                         size={size}
                         color={'white'}
@@ -74,7 +75,7 @@ export default function MainDrawerNavigator() {
                 drawerLabelStyle: { fontWeight: 'bold', left: -19 },
                 drawerItemStyle: { marginLeft: 26 },
                 drawerType: 'slide',
-                headerTitleStyle: { fontFamily: 'bold' }
+                headerTitleStyle: { fontFamily: '6', top: 0.5 }
             }}
             drawerContent={props => <CustomDrawerContent {...props} />}
         >
@@ -83,7 +84,7 @@ export default function MainDrawerNavigator() {
                     <>
                         {/* User Screen */}
                         <Drawer.Screen name="Home" component={Home} options={({ navigation }) => ({
-                            drawerIcon: ({ color, size, focused }) => <FontAwesome5 size={size} color={color} name={'house-user'} />,
+                            drawerIcon: ({ color, size }) => <FontAwesome5 size={size} color={color} name={'house-user'} />,
                             // headerRight: () => <HeaderButton cart navigation={navigation} text={5} />
                         })} />
                         <Drawer.Screen name="Message" component={Message} options={({ navigation }) => ({
@@ -101,7 +102,7 @@ export default function MainDrawerNavigator() {
                             headerLeft: () => <HeaderButton navigation={navigation} />,
                         })} />
                         <Drawer.Screen name="Profile" component={Profile} options={({ navigation }) => ({
-                            drawerIcon: ({ color, size, focused }) => <Ionicons size={size} color={color} name={'md-person-circle'} />,
+                            drawerIcon: ({ color, size }) => <Ionicons size={size} color={color} name={'md-person-circle'} />,
                             headerLeft: () => <HeaderButton navigation={navigation} />
                         })} />
                     </>
@@ -109,10 +110,10 @@ export default function MainDrawerNavigator() {
                     <>
                         {/* Tailor Screens */}
                         < Drawer.Screen name="Home" component={Home} options={({ navigation }) => ({
-                            drawerIcon: ({ color, size, focused }) => <FontAwesome5 size={size} color={color} name={'house-user'} />
+                            drawerIcon: ({ color, size }) => <FontAwesome5 size={size} color={color} name={'house-user'} />
                         })} />
                         <Drawer.Screen name="ManageOrders" component={ManageOrders} options={({ navigation }) => ({
-                            drawerIcon: ({ color, size, focused }) => <Ionicons size={size} color={color} name={'md-newspaper'} />,
+                            drawerIcon: ({ color, size }) => <Ionicons size={size} color={color} name={'md-newspaper'} />,
                             headerLeft: () => <HeaderButton navigation={navigation} />,
                             headerStatusBarHeight: 59,
                             headerTitle: '',
@@ -120,7 +121,7 @@ export default function MainDrawerNavigator() {
                             headerStyle: { borderBottomWidth: 0, elevation: 0, backgroundColor: colors.offWhite },
                         })} />
                         <Drawer.Screen name="Message" component={Message} options={({ navigation }) => ({
-                            drawerIcon: ({ color, size, focused }) => <Entypo size={size} color={color} name={'shopping-bag'} />,
+                            drawerIcon: ({ color, size }) => <Entypo size={size} color={color} name={'shopping-bag'} />,
                             headerLeft: () => <HeaderButton navigation={navigation} />,
                             headerStatusBarHeight: 59,
                             headerTitle: '',
