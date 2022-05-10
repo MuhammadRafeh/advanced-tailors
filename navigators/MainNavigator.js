@@ -1,0 +1,20 @@
+import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+import BottomTabNav from './BottomTabNav';
+import MainDrawerNavigator from './MainDrawerNavigator';
+
+const Stack = createStackNavigator();
+
+function MainNavigator() {
+    return (
+        <Stack.Navigator initialRouteName={'Home'}
+            screenOptions={{
+                headerShown: false
+            }}
+        >
+            <Stack.Screen name="HomeNav" component={MainDrawerNavigator} />
+        </Stack.Navigator>
+    );
+}
+
+export default MainNavigator;

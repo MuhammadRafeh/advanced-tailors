@@ -8,15 +8,15 @@ import {
   ScrollView,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Button from '../components/Button';
-import {authenticate} from '../redux/actions';
+import { authenticate } from '../redux/actions';
 
 const SignupModel = props => {
   const dispatch = useDispatch();
   const fromSeller = props?.route?.params?.fromSeller;
   return (
-    <View style={{flex: 1}}>
+    <View style={{ flex: 1 }}>
       <View
         style={{
           height: 55,
@@ -33,7 +33,7 @@ const SignupModel = props => {
           }}
           onPress={() => props.navigation.goBack()}>
           <Icon name={'ios-arrow-up-outline'} size={20} color={'#969292'} />
-          <Text style={{color: '#a6a1a1', fontSize: 14.5, letterSpacing: -0.3}}>
+          <Text style={{ color: '#a6a1a1', fontSize: 14.5, letterSpacing: -0.3 }}>
             Go back
           </Text>
         </TouchableOpacity>
@@ -46,13 +46,13 @@ const SignupModel = props => {
         }}>
         <Image />
 
-        <View style={{marginBottom: 4}}>
-          <Text style={{fontSize: 22, fontWeight: 'bold', color: 'black'}}>
+        <View style={{ marginBottom: 4 }}>
+          <Text style={{ fontSize: 22, fontWeight: 'bold', color: 'black' }}>
             Join Us
           </Text>
         </View>
-        <View style={{marginBottom: 26}}>
-          <Text style={{color: 'grey'}}>
+        <View style={{ marginBottom: 26 }}>
+          <Text style={{ color: 'grey' }}>
             Join our growing tailor community to offer your amazing stiches,
             connect with customers and get payment through this trusted
             platform.
@@ -61,19 +61,19 @@ const SignupModel = props => {
 
         <Button
           label={'Continue with Facebook'}
-          style={{marginVertical: 4, backgroundColor: '#002e78'}}
-          textStyle={{fontWeight: 'normal'}}
+          style={{ marginVertical: 4, backgroundColor: '#002e78' }}
+          textStyle={{ fontWeight: 'normal' }}
         />
         <Button
           label={'Continue with Google'}
-          style={{marginVertical: 4, backgroundColor: '#3f80e8'}}
-          textStyle={{fontWeight: 'normal'}}
+          style={{ marginVertical: 4, backgroundColor: '#3f80e8' }}
+          textStyle={{ fontWeight: 'normal' }}
         />
         <Button
           label={'Sign Up with Email'}
           onPress={() => props.navigation.navigate('Signup')}
-          style={{marginVertical: 4, backgroundColor: 'orange'}}
-          textStyle={{fontWeight: 'normal'}}
+          style={{ marginVertical: 4, backgroundColor: 'orange' }}
+          textStyle={{ fontWeight: 'normal' }}
         />
 
         <View
@@ -86,7 +86,7 @@ const SignupModel = props => {
           }}>
           <TouchableOpacity
             onPress={() => props.navigation.navigate('LoginModel')}>
-            <Text style={{color: 'orange', fontSize: 15}}>Sign In</Text>
+            <Text style={{ color: 'orange', fontSize: 15 }}>Sign In</Text>
           </TouchableOpacity>
           {!fromSeller && (
             <TouchableOpacity
@@ -94,7 +94,7 @@ const SignupModel = props => {
                 props.navigation.navigate('SignupModel');
                 dispatch(authenticate('', '', 'guest'));
               }}>
-              <Text style={{color: 'orange', fontSize: 15}}>Skip</Text>
+              <Text style={{ color: 'orange', fontSize: 15 }}>Skip</Text>
             </TouchableOpacity>
           )}
         </View>
