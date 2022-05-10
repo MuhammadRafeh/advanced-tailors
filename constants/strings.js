@@ -1,5 +1,5 @@
 export default {
-    tailor: 'tailor',
-    customer: 'customer',
-    guest: 'guest'
-}
+  tailor: 'tailor',
+  customer: 'customer',
+  guest: 'guest',
+};
