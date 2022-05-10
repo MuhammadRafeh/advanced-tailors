@@ -1,12 +1,12 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import Home from '../screens/Home/Home';
-import Profile from '../screens/Home/Profile';
-import Notification from '../screens/Home/Notification';
-import Search from '../screens/Home/Search';
-import Message from '../screens/Home/Message';
-import ManageOrders from '../screens/Home/ManageOrders';
+import Home from '../screens/Customer/Home';
+import Profile from '../screens/Customer/Profile';
+import Notification from '../screens/Customer/Notification';
+import Search from '../screens/Customer/Search';
+import Message from '../screens/Customer/Message';
+import ManageOrders from '../screens/Customer/ManageOrders';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 import colors from '../constants/colors';

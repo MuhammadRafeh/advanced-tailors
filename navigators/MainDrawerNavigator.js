@@ -14,12 +14,12 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 
-import Home from '../screens/Home/Home';
-import Profile from '../screens/Home/Profile';
-import Notification from '../screens/Home/Notification';
-import Search from '../screens/Home/Search';
-import Message from '../screens/Home/Message';
-import ManageOrders from '../screens/Home/ManageOrders';
+import Home from '../screens/Customer/Home';
+import Profile from '../screens/Customer/Profile';
+import Notification from '../screens/Customer/Notification';
+import Search from '../screens/Customer/Search';
+import Message from '../screens/Customer/Message';
+import ManageOrders from '../screens/Customer/ManageOrders';
 import HeaderButton from '../components/HeaderButton';
 import colors from '../constants/colors';
 import { useSelector } from 'react-redux';
