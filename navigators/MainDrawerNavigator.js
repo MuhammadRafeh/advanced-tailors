@@ -80,31 +80,41 @@ export default function MainDrawerNavigator() {
             drawerContent={props => <CustomDrawerContent {...props} />}
         >
             {
-                whoIsLogin == 'guest' ? (
+                whoIsLogin == 'guest' || whoIsLogin == 'customer' ? (
                     <>
-                        {/* User Screen */}
+                        {/* User & guest Screen */}
                         <Drawer.Screen name="Home" component={Home} options={({ navigation }) => ({
                             drawerIcon: ({ color, size }) => <FontAwesome5 size={size} color={color} name={'house-user'} />,
                             // headerRight: () => <HeaderButton cart navigation={navigation} text={5} />
                         })} />
-                        <Drawer.Screen name="Message" component={Message} options={({ navigation }) => ({
-                            drawerIcon: ({ color, size }) => <Ionicons size={size} color={color} name={'mail'} />,
-                            headerLeft: () => <HeaderButton navigation={navigation} />,
-                            headerStyle: { backgroundColor: colors.offWhite }
-                        })} />
+                        {
+                            whoIsLogin == 'customer' && (
+                                < Drawer.Screen name="Message" component={Message} options={({ navigation }) => ({
+                                    drawerIcon: ({ color, size }) => <Ionicons size={size} color={color} name={'mail'} />,
+                                    headerLeft: () => <HeaderButton navigation={navigation} />,
+                                    headerStyle: { backgroundColor: colors.offWhite }
+                                })} />
+                            )
+                        }
                         <Drawer.Screen name="Search" component={Search} options={({ navigation }) => ({
                             drawerIcon: ({ color, size }) => <Ionicons size={size} color={color} name={'search'} />,
                             headerLeft: () => <HeaderButton navigation={navigation} />,
                             headerStyle: { backgroundColor: colors.secondary }
                         })} />
-                        <Drawer.Screen name="Notification" component={Notification} options={({ navigation }) => ({
-                            drawerIcon: ({ color, size }) => <Ionicons size={size} color={color} name={'md-notifications'} />,
-                            headerLeft: () => <HeaderButton navigation={navigation} />,
-                        })} />
-                        <Drawer.Screen name="Profile" component={Profile} options={({ navigation }) => ({
-                            drawerIcon: ({ color, size }) => <Ionicons size={size} color={color} name={'md-person-circle'} />,
-                            headerLeft: () => <HeaderButton navigation={navigation} />
-                        })} />
+                        {
+                            whoIsLogin == 'customer' && (
+                                <>
+                                    <Drawer.Screen name="Notification" component={Notification} options={({ navigation }) => ({
+                                        drawerIcon: ({ color, size }) => <Ionicons size={size} color={color} name={'md-notifications'} />,
+                                        headerLeft: () => <HeaderButton navigation={navigation} />,
+                                    })} />
+                                    <Drawer.Screen name="Profile" component={Profile} options={({ navigation }) => ({
+                                        drawerIcon: ({ color, size }) => <Ionicons size={size} color={color} name={'md-person-circle'} />,
+                                        headerLeft: () => <HeaderButton navigation={navigation} />
+                                    })} />
+                                </>
+                            )
+                        }
                     </>
                 ) : (
                     <>
