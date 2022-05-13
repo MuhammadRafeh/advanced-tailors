@@ -30,8 +30,8 @@ function CustomDrawerContent(props) {
         <>
             <DrawerContentScrollView {...props}>
                 <View style={{ flex: 1, marginTop: 75 }}>
-                    <View style={{ position: 'absolute', width: 100, height: 100, borderRadius: 50, backgroundColor: colors.secondary, opacity: 0.1, top: -130, right: 20 }} />
-                    <View style={{ position: 'absolute', width: 30, height: 30, borderRadius: 6, borderWidth: 8, borderColor: colors.secondary, opacity: 0.1, top: -50, left: '36%', transform: [{ rotate: '25deg' }] }} />
+                    <View style={{ position: 'absolute', width: 100, height: 100, borderRadius: 50, backgroundColor: colors.secondary, opacity: 0.2, top: -130, right: 20 }} />
+                    <View style={{ position: 'absolute', width: 30, height: 30, borderRadius: 6, borderWidth: 8, borderColor: colors.secondary, opacity: 0.2, top: -50, left: '36%', transform: [{ rotate: '25deg' }] }} />
                     <DrawerItemList {...props} />
                 </View>
             </DrawerContentScrollView>

@@ -5,12 +5,22 @@ import graphcms from '../../graphCMS/graphCMS';
 
 const QUERY = gql`
 query MyQuery {
-  categories {
+  categories{
+    id
     name
     collections {
+      id
       name
       varieties {
+        id
         name
+        products {
+          id
+          name
+          price
+          description
+          excerpt
+        }
       }
     }
   }
@@ -20,7 +30,8 @@ const Home = props => {
   const [categories, setCategories] = useState([]);
   const getData = async () => {
     const { categories } = await graphcms.request(QUERY);
-    console.log(categories)
+    // console.log(data.categories[0].collections[0].varieties, 'dara')
+    console.log(categories, 'dara')
     setCategories(categories);
   };
 
@@ -29,27 +40,31 @@ const Home = props => {
   }, []);
   return (
     <View style={styles.screen}>
-      {categories.map(category => (
-        <View key={category.name} style={{ padding: 10 }}>
-          <View>
-            <Text>
-              {category.name}
-            </Text>
+      {
+        categories.map(category => (
+          <View key={category.name} style={{ padding: 10 }}>
+            <View>
+              <Text style={{color: 'black'}}>
+                {category.name}
+              </Text>
+            </View>
+
+            <View>
+              <ScrollView horizontal>
+                {
+                  category.collections.map(item => {
+                    console.log(item, 'asd')
+                    return (
+                      < View />
+                    )
+                  })
+                }
+              </ScrollView>
+            </View>
+
           </View>
-          <View>
-            <ScrollView horizontal>
-              {
-                category.collections.map(item => {
-                  console.log(item, 'asd')
-                  return (
-                    < View />
-                  )
-                })
-              }
-            </ScrollView>
-          </View>
-        </View>
-      ))}
+        ))
+      }
     </View>
   )
 };
