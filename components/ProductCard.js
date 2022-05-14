@@ -1,37 +1,97 @@
-import React from 'react';
-import { Text, View, StyleSheet, Dimensions } from 'react-native';
-import colors from '../constants/colors';
-const { width } = Dimensions.get('window');
+import React, { useState, useEffect, useRef } from 'react';
+import {
+    StyleSheet,
+    Text,
+    View,
+    ScrollView,
+    StatusBar,
+    TouchableOpacity,
+    Image,
+} from 'react-native';
 
-const ProductCard = props => {
-    const { item } = props;
+import Icon from 'react-native-vector-icons/Feather';
+import FAIcon from 'react-native-vector-icons/FontAwesome';
 
+export default function ProductCard({ productImage, productName, productPrice }) {
     return (
-        <View style={[styles.card, { width: (width - 41) / 1.68, height: '85%' }]}>
-            <View style={{ height: '55%' }}>
-
+        <View style={{ width: 180, marginHorizontal: 10 }}>
+            <View style={styles.moreProductImageView}>
+                <Image
+                    style={{ flex: 1 }}
+                    source={{
+                        uri: productImage,
+                    }}
+                />
             </View>
-            <View style={{ height: '45%', width: '96%', alignItems: 'center', alignSelf: 'center', alignItems: 'center', justifyContent: 'center', paddingVertical: 10 }}>
-                <View style={{ marginBottom: 15 }}>
-                    <Text style={{ fontWeight: 'bold', fontSize: 18 }} numberOfLines={2} adjustsFontSizeToFit={true}>{item.name}</Text>
-                </View>
-                <View>
-                    <Text style={{ color: colors.primary }} numberOfLines={1} adjustsFontSizeToFit={true}>${item.price}</Text>
+            <View style={{ marginTop: 8 }}>
+                <Text style={styles.moreProductName}>
+                    {productName}
+                </Text>
+                <View style={styles.moreProductPriceView}>
+                    <Text style={styles.moreProductPrice}>
+                        ${productPrice}
+                    </Text>
+                    <View style={{ flexDirection: 'row' }}>
+                        <Icon
+                            style={styles.moreProductIcon}
+                            name='heart'
+                            size={18}
+                        />
+                        <Icon
+                            style={styles.moreProductIcon}
+                            name='shopping-bag'
+                            size={18}
+                        />
+                        <Icon
+                            style={styles.moreProductIcon}
+                            name='share'
+                            size={18}
+                        />
+                    </View>
                 </View>
             </View>
+            <TouchableOpacity style={styles.moreProductBuyButton}>
+                <Text style={styles.moreProductBuyButtonText}>Buy</Text>
+            </TouchableOpacity>
         </View>
     );
 }
 
-export default ProductCard;
-
 const styles = StyleSheet.create({
-    card: {
-        backgroundColor: 'white',
-        marginRight: 17,
-        marginLeft: 3,
-        marginVertical: 20,
-        elevation: 5,
-        borderRadius: 20,
+    moreProductImageView: {
+        flex: 1,
+        height: 240,
+        backgroundColor: '#fff',
+        borderRadius: 4,
+        overflow: 'hidden',
+    },
+    moreProductName: {
+        fontFamily: '2',
+        fontSize: 16,
+    },
+    moreProductPriceView: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginTop: 8,
+    },
+    moreProductPrice: {
+        fontSize: 16,
+        fontFamily: 'MontserratRegular',
+    },
+    moreProductIcon: {
+        marginLeft: 10,
+    },
+    moreProductBuyButton: {
+        backgroundColor: '#111',
+        marginTop: 10,
+        paddingVertical: 8,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    moreProductBuyButtonText: {
+        color: '#fff',
+        fontFamily: '2',
+        fontSize: 18,
     }
 });
