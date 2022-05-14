@@ -83,59 +83,61 @@
 **/
 
 // React native and others libraries imports
-import React, { Component } from 'react';
-import { Image, Text, View, ScrollView } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Text, View, Image, ScrollView } from 'react-native';
+import ProductCard from '../../components/ProductCard';
+import { gql } from 'graphql-request';
+import graphcms from '../../graphCMS/graphCMS';
+
+const QUERY = gql`
+query MyQuery {
+  varieties {
+    id
+    name
+    products {
+      id
+      image {
+        id
+        url
+      }
+      name
+      price
+    }
+  }
+}`;
+
 
 const Home = props => {
+  const [varieties, setVarieties] = useState([]);
+  const getData = async () => {
+    const { varieties } = await graphcms.request(QUERY);
+    setVarieties(varieties)
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
   return (
-    <>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        <View style={{ flex: 1, flexDirection: 'row', paddingTop: 10 }}>
-          {moreProducts.map((item, key) => (
-            <View style={{ width: 180, marginHorizontal: 10 }} key={key}>
-              <View style={styles.moreProductImageView}>
-                <Image
-                  style={{ flex: 1 }}
-                  source={{
-                    uri: item.productImage,
-                  }}
-                />
-              </View>
-              <View style={{ marginTop: 8 }}>
-                <Text style={styles.moreProductName}>
-                  {item.productName}
-                </Text>
-                <View style={styles.moreProductPriceView}>
-                  <Text style={styles.moreProductPrice}>
-                    ${item.productPrice}
-                  </Text>
-                  <View style={{ flexDirection: 'row' }}>
-                    <Icon
-                      style={styles.moreProductIcon}
-                      name='heart'
-                      size={18}
-                    />
-                    <Icon
-                      style={styles.moreProductIcon}
-                      name='shopping-bag'
-                      size={18}
-                    />
-                    <Icon
-                      style={styles.moreProductIcon}
-                      name='share'
-                      size={18}
-                    />
-                  </View>
+    <View style={{ flex: 1 }}>
+      <ScrollView>
+        {
+          varieties.map(item => (
+            <View key={item.id}>
+              <Text>{item.name}</Text>
+              <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                <View style={{ flex: 1, flexDirection: 'row', paddingTop: 10 }}>
+                  {
+                    item.products.map(product => (
+                      <ProductCard key={product.id} productImage={product?.image?.url} productName={product.name} productPrice={product.price} />
+                    ))
+                  }
                 </View>
-              </View>
-              <TouchableOpacity style={styles.moreProductBuyButton}>
-                <Text style={styles.moreProductBuyButtonText}>Buy</Text>
-              </TouchableOpacity>
+              </ScrollView>
             </View>
-          ))}
-        </View>
+          ))
+        }
       </ScrollView>
-    </>
+    </View>
   )
 }
 

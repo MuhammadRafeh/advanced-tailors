@@ -13,6 +13,7 @@ import Icon from 'react-native-vector-icons/Feather';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
 
 export default function ProductCard({ productImage, productName, productPrice }) {
+    console.log(productImage)
     return (
         <View style={{ width: 180, marginHorizontal: 10 }}>
             <View style={styles.moreProductImageView}>
