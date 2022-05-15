@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/Feather';
+import colors from '../constants/colors';
 
 export default function ProductCard({ productImage, productName, productPrice, buttonTitle, onPress }) {
     return (
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
         marginLeft: 10,
     },
     moreProductBuyButton: {
-        backgroundColor: '#111',
+        backgroundColor: colors.primary,
         marginTop: 10,
         paddingVertical: 8,
         alignItems: 'center',

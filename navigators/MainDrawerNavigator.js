@@ -85,7 +85,7 @@ export default function MainDrawerNavigator() {
                         {/* User & guest Screen */}
                         <Drawer.Screen name="Home" component={Home} options={({ navigation }) => ({
                             drawerIcon: ({ color, size }) => <FontAwesome5 size={size} color={color} name={'house-user'} />,
-                            // headerRight: () => <HeaderButton cart navigation={navigation} text={5} />
+                            headerRight: () => <HeaderButton cart navigation={navigation} text={5} />
                         })} />
                         {
                             whoIsLogin == 'customer' && (

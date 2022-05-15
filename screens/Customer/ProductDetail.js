@@ -160,7 +160,7 @@ export default function ProductDetail(props) {
                         <Text style={{ fontFamily: '1' }}>
                             {seeFullDescription
                                 ? `${productDescription}`
-                                : `${productDescription?.split('\n').slice(3)}`}
+                                : `${productDescription?.split('\n').slice(0)}`}
                         </Text>
                     </View>
                 </View>

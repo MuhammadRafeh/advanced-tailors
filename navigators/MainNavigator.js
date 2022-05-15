@@ -15,6 +15,7 @@ function MainNavigator() {
         >
             <Stack.Screen name="HomeNav" component={MainDrawerNavigator} />
             <Stack.Screen name="ProductDetail" component={ProductDetail} />
+            {/* <Stack.Screen name="Cart" component={ProductDetail} /> */}
         </Stack.Navigator>
     );
 }
