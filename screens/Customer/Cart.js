@@ -166,11 +166,11 @@ export default function Cart({ navigation }) {
                                 <Text style={styles.totalText}>Total -</Text>
                                 {shippingMethod === 'Normal' ? (
                                     <Text style={styles.totalPrice}>
-                                        ${cart.reduce((acc, val) => val.price + acc, 0)}
+                                        ${cart.reduce((acc, val) => val.totalPrice + acc, 0)}
                                     </Text>
                                 ) : (
                                     <Text style={styles.totalPrice}>
-                                        ${cart.reduce((acc, val) => val.price + acc, 0) + 60}
+                                        ${cart.reduce((acc, val) => val.totalPrice + acc, 0) + 60}
                                     </Text>
                                 )}
                             </View>
