@@ -8,34 +8,40 @@ import {
     Image,
     TextInput,
     Alert,
-    SafeAreaView,
     ScrollView,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import Radio from '../../components/Radio';
+import colors from '../../constants/colors';
+import { addToCart } from '../../redux/actions';
 
 export default function Cart({ navigation }) {
-    const [cart, setCart] = useState([
-        {
-            id: 'PID000101',
-            name: 'Wired Mouse',
-            company: 'Logitech',
-            img:
-                'https://assets.logitech.com/assets/65019/3/mouton-boat-m90-refresh-gallery-image.png',
-            quantity: 1,
-            price: 299,
-            perPrice: 299,
-        },
-        {
-            id: 'PID000106',
-            name: 'Airpods',
-            company: 'Apple',
-            img:
-                'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MV7N2?wid=1144&hei=1144&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1551489688005',
-            quantity: 1,
-            price: 13999,
-            perPrice: 13999,
-        },
-    ]);
+    const dispatch = useDispatch();
+    const cart = useSelector(state => state.cart.items);
+    // const [cart, setCart] = useState([
+    //     {
+    //         id: 'PID000101',
+    //         name: 'Wired Mouse',
+    //         company: 'Logitech',
+    //         img:
+    //             'https://assets.logitech.com/assets/65019/3/mouton-boat-m90-refresh-gallery-image.png',
+    //         quantity: 1,
+    //         price: 299,
+    //         perPrice: 299,
+    //     },
+    //     {
+    //         id: 'PID000106',
+    //         name: 'Airpods',
+    //         company: 'Apple',
+    //         img:
+    //             'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MV7N2?wid=1144&hei=1144&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1551489688005',
+    //         quantity: 1,
+    //         price: 13999,
+    //         perPrice: 13999,
+    //     },
+    // ]);
     const [shippingMethod, setShippingMethod] = useState('Normal');
 
     useEffect(() => {
@@ -53,14 +59,14 @@ export default function Cart({ navigation }) {
                         navigation.goBack();
                     }}
                 >
-                    <Icon name='angle-left' type='font-awesome' size={30} color='#fff' />
+                    <Icon name='angle-left' size={30} color='#fff' />
                 </TouchableOpacity>
             </View>
             <Text style={styles.paymentTitle}>Payment</Text>
             <View style={styles.cartContainer}>
                 <ScrollView showsVerticalScrollIndicator={false}>
                     <View style={styles.cartTitleView}>
-                        <Icon name='shopping-cart' type='font-awesome-5' />
+                        <Icon name='shopping-cart' size={23} />
                         <Text style={styles.cartTitle}>My Cart</Text>
                     </View>
 
@@ -85,43 +91,17 @@ export default function Cart({ navigation }) {
                                         <View style={styles.productRightView}>
                                             <Text
                                                 style={styles.productPriceText}
-                                            >{`₹${product.price}`}</Text>
+                                            >{`$${product.price}`}</Text>
                                             <View style={styles.productItemCounterView}>
                                                 <TouchableOpacity
                                                     onPress={() => {
-                                                        if (product.quantity === 1) {
-                                                            return Alert.alert(
-                                                                `Remove ${product.name}?`,
-                                                                '',
-                                                                [
-                                                                    { text: 'Cancel' },
-                                                                    {
-                                                                        text: 'Remove',
-                                                                        onPress: () => {
-                                                                            const newCart = cart.filter(
-                                                                                (p) => p.id !== product.id
-                                                                            );
-                                                                            setCart(newCart);
-                                                                        },
-                                                                    },
-                                                                ]
-                                                            );
-                                                        }
-                                                        const newProd = {
-                                                            ...product,
-                                                            quantity: product.quantity - 1,
-                                                            price: product.price - product.perPrice,
-                                                        };
-                                                        const restProds = cart.filter(
-                                                            (p) => p.id !== product.id
-                                                        );
-                                                        setCart([...restProds, newProd]);
+
                                                     }}
                                                 >
                                                     <Icon
                                                         style={styles.toggleCounterButton}
                                                         name='minus-circle'
-                                                        type='font-awesome'
+                                                        size={15}
                                                     />
                                                 </TouchableOpacity>
                                                 <Text style={styles.counterValue}>
@@ -129,21 +109,15 @@ export default function Cart({ navigation }) {
                                                 </Text>
                                                 <TouchableOpacity
                                                     onPress={() => {
-                                                        const newProd = {
-                                                            ...product,
-                                                            quantity: product.quantity + 1,
-                                                            price: product.price + product.perPrice,
-                                                        };
-                                                        const restProds = cart.filter(
-                                                            (p) => p.id !== product.id
+                                                        dispatch(
+                                                            addToCart({ id: product.id, quantity: 1, price: product.price, name: product.name, img: product.img })
                                                         );
-                                                        setCart([...restProds, newProd]);
                                                     }}
                                                 >
                                                     <Icon
                                                         style={styles.toggleCounterButton}
                                                         name='plus-circle'
-                                                        type='font-awesome'
+                                                        size={15}
                                                     />
                                                 </TouchableOpacity>
                                             </View>
@@ -162,7 +136,7 @@ export default function Cart({ navigation }) {
                             <View style={styles.subtotalView}>
                                 <Text style={styles.subtotalText}>Subtotal -</Text>
                                 <Text style={styles.subtotalPrice}>
-                                    ₹{cart.reduce((acc, val) => val.price + acc, 0)}
+                                    ${cart.reduce((acc, val) => val.price + acc, 0)}
                                 </Text>
                             </View>
                             <View style={styles.shippingView}>
@@ -175,9 +149,7 @@ export default function Cart({ navigation }) {
                                         }}
                                     >
                                         <Text style={styles.shippingItemText}>Normal (Free)</Text>
-                                        {/* <Radio selected={shippingMethod === 'Normal'} /> */}
-                                        
-
+                                        <Radio isSelect={shippingMethod === 'Normal'} />
                                     </TouchableOpacity>
                                     <TouchableOpacity
                                         style={styles.shippingItem}
@@ -185,10 +157,8 @@ export default function Cart({ navigation }) {
                                             setShippingMethod('Express');
                                         }}
                                     >
-                                        <Text style={styles.shippingItemText}>Express (₹60)</Text>
-                                        {/* <Radio selected={shippingMethod === 'Express'} /> */}
-
-
+                                        <Text style={styles.shippingItemText}>Express ($60)</Text>
+                                        <Radio isSelect={shippingMethod === 'Express'} />
                                     </TouchableOpacity>
                                 </View>
                             </View>
@@ -196,11 +166,11 @@ export default function Cart({ navigation }) {
                                 <Text style={styles.totalText}>Total -</Text>
                                 {shippingMethod === 'Normal' ? (
                                     <Text style={styles.totalPrice}>
-                                        ₹{cart.reduce((acc, val) => val.price + acc, 0)}
+                                        ${cart.reduce((acc, val) => val.price + acc, 0)}
                                     </Text>
                                 ) : (
                                     <Text style={styles.totalPrice}>
-                                        ₹{cart.reduce((acc, val) => val.price + acc, 0) + 60}
+                                        ${cart.reduce((acc, val) => val.price + acc, 0) + 60}
                                     </Text>
                                 )}
                             </View>
@@ -226,7 +196,7 @@ export default function Cart({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#333',
+        backgroundColor: colors.primary,
         paddingTop: 40,
     },
     header: {
@@ -249,7 +219,7 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 40,
         paddingTop: 30,
         paddingHorizontal: 16,
-        shadowColor: '#333',
+        shadowColor: colors.primary,
         shadowOffset: {
             width: 0,
             height: 3,
@@ -274,14 +244,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         paddingVertical: 6,
         paddingHorizontal: 8,
-        // borderRadius: 10,
-        shadowColor: '#333',
+        shadowColor: colors.primary,
         shadowOffset: {
             width: 0,
             height: 1,
         },
         shadowOpacity: 0.2,
-        // shadowRadius: 2,
         elevation: 2,
         marginTop: 14,
     },
@@ -333,7 +301,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 50,
         borderWidth: 1,
-        borderColor: '#333',
+        borderColor: colors.primary,
         marginTop: 20,
         display: 'flex',
         flexDirection: 'row',
@@ -344,7 +312,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
     },
     couponButton: {
-        backgroundColor: '#333',
+        backgroundColor: colors.primary,
         paddingHorizontal: 12,
         justifyContent: 'center',
     },
@@ -359,7 +327,7 @@ const styles = StyleSheet.create({
         marginTop: 40,
         justifyContent: 'space-between',
         paddingBottom: 10,
-        borderBottomColor: '#333',
+        borderBottomColor: colors.primary,
         borderBottomWidth: 1,
     },
     subtotalText: {
@@ -375,7 +343,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         marginTop: 20,
         paddingBottom: 10,
-        borderBottomColor: '#333',
+        borderBottomColor: colors.primary,
         borderBottomWidth: 1,
     },
     shippingItemsView: {
@@ -401,7 +369,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         justifyContent: 'space-between',
         paddingBottom: 10,
-        borderBottomColor: '#333',
+        borderBottomColor: colors.primary,
         borderBottomWidth: 1,
     },
     totalText: {
@@ -413,7 +381,7 @@ const styles = StyleSheet.create({
         fontWeight: '300',
     },
     checkoutButton: {
-        backgroundColor: '#333',
+        backgroundColor: colors.primary,
         paddingVertical: 14,
         marginTop: 30,
         alignItems: 'center',

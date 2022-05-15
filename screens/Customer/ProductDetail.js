@@ -11,8 +11,10 @@ import {
 
 import Icon from 'react-native-vector-icons/Feather';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
+import { useDispatch } from 'react-redux';
 import ProductCard from '../../components/ProductCard';
 import { getSingleProduct } from '../../graphCMS/graphCMS';
+import { addToCart } from '../../redux/actions';
 
 const Rating = ({ rating, maxRating }) => {
     return (
@@ -32,6 +34,7 @@ const Rating = ({ rating, maxRating }) => {
 };
 
 export default function ProductDetail(props) {
+    const dispatch = useDispatch();
     const { id, imageURL, name, price, varietyId, products } = props.route.params;
     const [isFavourite, setFavourite] = useState(false);
     const [size] = useState([
@@ -132,7 +135,11 @@ export default function ProductDetail(props) {
                     <TouchableOpacity style={styles.buyNowButton}>
                         <Text style={styles.buttonText}>Buy Now</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.addToCartButton}>
+                    <TouchableOpacity style={styles.addToCartButton} onPress={() => {
+                        dispatch(
+                            addToCart({ id, quantity: 1, price, name, img: imageURL })
+                        );
+                    }}>
                         <Text style={[styles.buttonText, { color: '#111' }]}>
                             Add to Cart
                         </Text>
