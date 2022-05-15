@@ -22,12 +22,12 @@ const Rating = ({ rating, maxRating }) => {
             {Array(rating)
                 .fill(1)
                 .map((el, index) => (
-                    <FAIcon name='star' size={20} color='#2e2e2e' />
+                    <FAIcon name='star' size={20} color='#2e2e2e' key={index} />
                 ))}
             {Array(maxRating - rating)
                 .fill(1)
                 .map((el, index) => (
-                    <FAIcon name='star-o' size={20} color='#2e2e2e' />
+                    <FAIcon name='star-o' size={20} color='#2e2e2e' key={index} />
                 ))}
         </View>
     );
@@ -185,6 +185,7 @@ export default function ProductDetail(props) {
                         <View style={{ flex: 1, flexDirection: 'row', paddingTop: 10 }}>
                             {moreProducts.map((item, key) => (
                                 <ProductCard
+                                    key={item.id}
                                     productImage={item.image?.url}
                                     productName={item.name}
                                     productPrice={item.price}

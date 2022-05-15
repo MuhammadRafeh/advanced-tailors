@@ -75,7 +75,7 @@ export default function Cart({ navigation }) {
                             {cart
                                 .sort((a, b) => a.name > b.name)
                                 .map((product) => (
-                                    <View style={styles.productView}>
+                                    <View style={styles.productView} key={product.id}>
                                         <Image
                                             style={styles.productImage}
                                             source={{
