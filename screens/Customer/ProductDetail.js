@@ -12,7 +12,7 @@ import {
 import Icon from 'react-native-vector-icons/Feather';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
 import ProductCard from '../../components/ProductCard';
-import { getSingleProduct, getSpecificVarietyProduct } from '../../graphCMS/graphCMS';
+import { getSingleProduct } from '../../graphCMS/graphCMS';
 
 const Rating = ({ rating, maxRating }) => {
     return (
@@ -32,7 +32,7 @@ const Rating = ({ rating, maxRating }) => {
 };
 
 export default function ProductDetail(props) {
-    const { id, imageURL, name, price, varietyId } = props.route.params;
+    const { id, imageURL, name, price, varietyId, products } = props.route.params;
     const [isFavourite, setFavourite] = useState(false);
     const [size] = useState([
         { id: 0, label: 'S' },
@@ -48,8 +48,6 @@ export default function ProductDetail(props) {
     const getData = async () => {
         const data = await getSingleProduct(id);
         setProductDescription(data[0].description?.trim())
-        const moreProducts = await getSpecificVarietyProduct(varietyId);
-        setMoreProducts(moreProducts[0].products)
     }
     useEffect(() => {
         getData();
@@ -60,7 +58,7 @@ export default function ProductDetail(props) {
 
     const [seeFullDescription, setSeeFullDescription] = useState(false);
 
-    const [moreProducts, setMoreProducts] = useState([]);
+    const [moreProducts, setMoreProducts] = useState(products.filter(item => item.id != id));
 
     useEffect(() => {
         StatusBar.setBarStyle('dark-content');
@@ -184,6 +182,17 @@ export default function ProductDetail(props) {
                                     productName={item.name}
                                     productPrice={item.price}
                                     buttonTitle={'Buy'}
+                                    onPress={() => {
+                                        console.log('asd')
+                                        props.navigation.push('ProductDetail', {
+                                            id: item.id,
+                                            varietyId: varietyId,
+                                            imageURL: item?.image?.url,
+                                            name: item.name,
+                                            price: item.price,
+                                            products: products
+                                        })
+                                    }}
                                 />
                             ))}
                         </View>

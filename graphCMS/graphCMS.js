@@ -17,22 +17,22 @@ export const getSingleProduct = async (id) => {
     return result.products;
 }
 
-export const getSpecificVarietyProduct = async (id) => {
-    const query = gql`  
-    query getVarietiesDetails($id: ID) {
-        varieties(where: {id: $id}) {
-          products {
-            id
-            name
-            image {
-              id
-              url
-            }
-            price
-          }
-        }
-    }  
-    `
-    const result = await request(endPoint, query, { id });
-    return result.varieties;
-}
+// export const getSpecificVarietyProduct = async (id) => {
+//     const query = gql`  
+//     query getVarietiesDetails($id: ID) {
+//         varieties(where: {id: $id}) {
+//           products {
+//             id
+//             name
+//             image {
+//               id
+//               url
+//             }
+//             price
+//           }
+//         }
+//     }  
+//     `
+//     const result = await request(endPoint, query, { id });
+//     return result.varieties;
+// }

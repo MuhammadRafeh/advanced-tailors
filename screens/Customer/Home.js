@@ -66,7 +66,8 @@ const Home = props => {
                           varietyId: item.id,
                           imageURL: product?.image?.url,
                           name: product.name,
-                          price: product.price
+                          price: product.price,
+                          products: item.products
                         })
                       }}
                     />
