@@ -15,7 +15,7 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import Radio from '../../components/Radio';
 import colors from '../../constants/colors';
-import { addToCart } from '../../redux/actions';
+import { addToCart, reduceFromCart } from '../../redux/actions';
 
 export default function Cart({ navigation }) {
     const dispatch = useDispatch();
@@ -95,7 +95,7 @@ export default function Cart({ navigation }) {
                                             <View style={styles.productItemCounterView}>
                                                 <TouchableOpacity
                                                     onPress={() => {
-
+                                                        dispatch(reduceFromCart({ id: product.id, quantity: product.quantity - 1 }))
                                                     }}
                                                 >
                                                     <Icon

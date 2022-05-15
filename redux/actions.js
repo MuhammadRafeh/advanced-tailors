@@ -2,6 +2,7 @@ export const AUTHENTICATE = 'AUTHENTICATE';
 export const LOGOUT = 'LOGOUT';
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
+export const REDUCE_FROM_CART = 'REDUCE_FROM_CART';
 
 export const authenticate = (email = '', password = '', isSkip) => {
   // It will take credentials
@@ -37,3 +38,15 @@ export const removeFromCart = productId => { //It's a integer/number
     payload: productId
   }
 }
+
+export const reduceFromCart = detail => { //It's a integer/number
+  const { id, quantity } = detail;
+  return {
+    type: REDUCE_FROM_CART,
+    payload: {
+      id,
+      quantity
+    }
+  }
+}
+

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import CartItemModel from '../models/cartItemModel';
-import { ADD_TO_CART, AUTHENTICATE, LOGOUT, REMOVE_FROM_CART } from './actions';
+import { ADD_TO_CART, AUTHENTICATE, LOGOUT, REDUCE_FROM_CART, REMOVE_FROM_CART } from './actions';
 
 const initialAuthState = {
   email: '',
@@ -72,6 +72,30 @@ const cartReducer = (state = initialStateCart, action) => {
         }
       }
 
+    case REDUCE_FROM_CART:
+      const copyItems = [...state.items];
+      const index = state.items.findIndex(item => item.id == action.payload.id);
+
+      if (action.payload.quantity <= 0) {
+        copyItems.splice(index, 1);
+        return {
+          items: copyItems
+        }
+      } else {
+        const item = state.items[index];
+        copyItems.splice(index, 1,
+          new CartItemModel(
+            item.id,
+            action.payload.quantity,
+            item.price,
+            item.name,
+            item.img
+          )
+        )
+        return {
+          items: copyItems
+        }
+      }
 
 
     default:
