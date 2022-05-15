@@ -12,8 +12,7 @@ import {
 import Icon from 'react-native-vector-icons/Feather';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
 
-export default function ProductCard({ productImage, productName, productPrice }) {
-    console.log(productImage)
+export default function ProductCard({ productImage, productName, productPrice, buttonTitle, onPress }) {
     return (
         <View style={{ width: 180, marginHorizontal: 10 }}>
             <View style={styles.moreProductImageView}>
@@ -51,8 +50,8 @@ export default function ProductCard({ productImage, productName, productPrice })
                     </View>
                 </View>
             </View>
-            <TouchableOpacity style={styles.moreProductBuyButton}>
-                <Text style={styles.moreProductBuyButtonText}>Buy</Text>
+            <TouchableOpacity style={styles.moreProductBuyButton} onPress={onPress}>
+                <Text style={styles.moreProductBuyButtonText}>{buttonTitle}</Text>
             </TouchableOpacity>
         </View>
     );

@@ -12,6 +12,7 @@ import {
 import Icon from 'react-native-vector-icons/Feather';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
 import ProductCard from '../../components/ProductCard';
+import { getSingleProduct } from '../../graphCMS/graphCMS';
 
 const Rating = ({ rating, maxRating }) => {
     return (
@@ -30,8 +31,8 @@ const Rating = ({ rating, maxRating }) => {
     );
 };
 
-export default function ProductScreen1() {
-
+export default function ProductDetail(props) {
+    const { id, imageURL, name, price } = props.route.params;
     const [isFavourite, setFavourite] = useState(false);
     const [size] = useState([
         { id: 0, label: 'S' },
@@ -40,11 +41,24 @@ export default function ProductScreen1() {
         { id: 3, label: 'XL' },
     ]);
 
+    const [image, setImage] = useState(imageURL);
+    const [title, setTitle] = useState(name);
+    const [actualPrice, setActualPrice] = useState(Math.floor(price + 253));
+    const [discountPrice, setDiscountPrice] = useState(price);
+
+    const getData = async () => {
+        const data = await getSingleProduct(id);
+        console.log(data)
+        setImage(data[0].image.url);
+        setProductDescription(data[0].description?.trim())
+        setTitle(data[0].name)
+    }
+    useEffect(() => {
+        getData();
+    }, [])
     const [selectedSize, setSelectedSize] = useState('M');
 
-    const [productDescription] = useState(
-        `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut ornare urna. Duis egestas ligula quam, ut tincidunt ipsum blandit at. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae justo congue, tempor urna vitae, placerat elit. Nulla nec consectetur dolor, in convallis erat. Fusce hendrerit id sem tristique congue. \n\nVestibulum mauris sapien, vulputate in lacus in, lacinia efficitur magna. Sed id massa ut magna eleifend lacinia et id tellus. Sed dignissim mollis lacus. Etiam laoreet ex eu sem euismod congue. In maximus porttitor imperdiet. Nulla eu dolor vehicula ligula mollis tristique ut in enim. Phasellus quis tempor velit. Vivamus sit amet orci ornare, pulvinar purus et, commodo magna. Nunc eu tortor vitae leo varius vehicula quis volutpat dolor.\n\nDonec interdum rutrum tellus, et rhoncus risus dignissim at. Aliquam sed imperdiet tortor, non aliquam sapien. Cras quis enim a elit fringilla vehicula. Aenean pulvinar ipsum a magna feugiat, a fermentum ante pellentesque. Mauris tincidunt placerat placerat. Quisque tincidunt enim sed metus fermentum maximus. Fusce eu tempus est.`
-    );
+    const [productDescription, setProductDescription] = useState(' ');
 
     const [seeFullDescription, setSeeFullDescription] = useState(false);
 
@@ -103,21 +117,20 @@ export default function ProductScreen1() {
                     <Image
                         style={{ height: 500, resizeMode: 'cover' }}
                         source={{
-                            uri:
-                                'https://images.unsplash.com/photo-1527719327859-c6ce80353573?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
+                            uri: image
                         }}
                     />
                 </View>
                 <View style={styles.detailsView}>
                     <View style={styles.productTitleView}>
-                        <Text style={styles.productTitle}>Men's OutCast T-Shirt</Text>
+                        <Text style={styles.productTitle}>{title}</Text>
                         <TouchableOpacity onPress={() => setFavourite(!isFavourite)}>
                             <FAIcon name={isFavourite ? 'heart' : 'heart-o'} size={22} />
                         </TouchableOpacity>
                     </View>
                     <View style={styles.productPriceView}>
-                        <Text style={styles.discountedPriceText}>$29.99</Text>
-                        <Text style={styles.actualPriceText}>$40.00</Text>
+                        <Text style={styles.discountedPriceText}>${discountPrice}</Text>
+                        <Text style={styles.actualPriceText}>${actualPrice}</Text>
                     </View>
                     <View style={{ marginTop: 10 }}>
                         <Rating rating={4} maxRating={5} />
@@ -187,7 +200,7 @@ export default function ProductScreen1() {
                         <Text style={{ fontFamily: '1' }}>
                             {seeFullDescription
                                 ? `${productDescription}`
-                                : `${productDescription.split('\n')[0]}`}
+                                : `${productDescription?.split('\n').slice(3)}`}
                         </Text>
                     </View>
                 </View>
@@ -204,7 +217,12 @@ export default function ProductScreen1() {
                     <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                         <View style={{ flex: 1, flexDirection: 'row', paddingTop: 10 }}>
                             {moreProducts.map((item, key) => (
-                                <ProductCard productImage={item.productImage} productName={item.productName} productPrice={item.productPrice} />
+                                <ProductCard
+                                    productImage={item.productImage}
+                                    productName={item.productName}
+                                    productPrice={item.productPrice}
+                                    buttonTitle={'Buy'}
+                                />
                             ))}
                         </View>
                     </ScrollView>
@@ -310,41 +328,5 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         borderBottomWidth: 1,
         borderBottomColor: '#dfe4fe',
-    },
-    moreProductImageView: {
-        flex: 1,
-        height: 240,
-        backgroundColor: '#fff',
-        borderRadius: 4,
-        overflow: 'hidden',
-    },
-    moreProductName: {
-        fontFamily: '2',
-        fontSize: 16,
-    },
-    moreProductPriceView: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        marginTop: 8,
-    },
-    moreProductPrice: {
-        fontSize: 16,
-        fontFamily: 'MontserratRegular',
-    },
-    moreProductIcon: {
-        marginLeft: 10,
-    },
-    moreProductBuyButton: {
-        backgroundColor: '#111',
-        marginTop: 10,
-        paddingVertical: 8,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    moreProductBuyButtonText: {
-        color: '#fff',
-        fontFamily: '2',
-        fontSize: 18,
-    },
+    }
 });

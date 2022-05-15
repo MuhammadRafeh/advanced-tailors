@@ -36,6 +36,7 @@ const Home = props => {
   return (
     <View style={{ flex: 1 }}>
       <FlatList
+        contentContainerStyle={{paddingBottom: 26}}
         data={varieties}
         renderItem={({ item }) => (
           <View key={item.id} style={styles.row}>
@@ -53,7 +54,21 @@ const Home = props => {
               <View style={{ flex: 1, flexDirection: 'row', paddingTop: 10 }}>
                 {
                   item.products.map(product => (
-                    <ProductCard key={product.id} productImage={product?.image?.url} productName={product.name} productPrice={product.price} />
+                    <ProductCard
+                      key={product.id}
+                      productImage={product?.image?.url}
+                      productName={product.name}
+                      productPrice={product.price}
+                      buttonTitle={'Buy'}
+                      onPress={() => {
+                        props.navigation.navigate('ProductDetail', {
+                          id: product.id,
+                          imageURL: product?.image?.url,
+                          name: product.name,
+                          price: product.price
+                        })
+                      }}
+                    />
                   ))
                 }
               </View>
