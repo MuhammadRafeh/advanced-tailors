@@ -91,7 +91,7 @@ export default function Cart({ navigation }) {
                                         <View style={styles.productRightView}>
                                             <Text
                                                 style={styles.productPriceText}
-                                            >{`$${product.price}`}</Text>
+                                            >{`$${product.totalPrice}`}</Text>
                                             <View style={styles.productItemCounterView}>
                                                 <TouchableOpacity
                                                     onPress={() => {
@@ -136,7 +136,7 @@ export default function Cart({ navigation }) {
                             <View style={styles.subtotalView}>
                                 <Text style={styles.subtotalText}>Subtotal -</Text>
                                 <Text style={styles.subtotalPrice}>
-                                    ${cart.reduce((acc, val) => val.price + acc, 0)}
+                                    ${cart.reduce((acc, val) => val.totalPrice + acc, 0)}
                                 </Text>
                             </View>
                             <View style={styles.shippingView}>
