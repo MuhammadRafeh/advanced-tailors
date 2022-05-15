@@ -36,7 +36,7 @@ const Home = props => {
   return (
     <View style={{ flex: 1 }}>
       <FlatList
-        contentContainerStyle={{paddingBottom: 26}}
+        contentContainerStyle={{ paddingBottom: 26 }}
         data={varieties}
         renderItem={({ item }) => (
           <View key={item.id} style={styles.row}>
@@ -63,6 +63,7 @@ const Home = props => {
                       onPress={() => {
                         props.navigation.navigate('ProductDetail', {
                           id: product.id,
+                          varietyId: item.id,
                           imageURL: product?.image?.url,
                           name: product.name,
                           price: product.price

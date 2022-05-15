@@ -1,16 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import {
     StyleSheet,
     Text,
     View,
-    ScrollView,
-    StatusBar,
     TouchableOpacity,
     Image,
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/Feather';
-import FAIcon from 'react-native-vector-icons/FontAwesome';
 
 export default function ProductCard({ productImage, productName, productPrice, buttonTitle, onPress }) {
     return (

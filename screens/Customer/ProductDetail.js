@@ -12,7 +12,7 @@ import {
 import Icon from 'react-native-vector-icons/Feather';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
 import ProductCard from '../../components/ProductCard';
-import { getSingleProduct } from '../../graphCMS/graphCMS';
+import { getSingleProduct, getSpecificVarietyProduct } from '../../graphCMS/graphCMS';
 
 const Rating = ({ rating, maxRating }) => {
     return (
@@ -32,7 +32,7 @@ const Rating = ({ rating, maxRating }) => {
 };
 
 export default function ProductDetail(props) {
-    const { id, imageURL, name, price } = props.route.params;
+    const { id, imageURL, name, price, varietyId } = props.route.params;
     const [isFavourite, setFavourite] = useState(false);
     const [size] = useState([
         { id: 0, label: 'S' },
@@ -40,7 +40,6 @@ export default function ProductDetail(props) {
         { id: 2, label: 'L' },
         { id: 3, label: 'XL' },
     ]);
-
     const [image, setImage] = useState(imageURL);
     const [title, setTitle] = useState(name);
     const [actualPrice, setActualPrice] = useState(Math.floor(price + 253));
@@ -48,10 +47,9 @@ export default function ProductDetail(props) {
 
     const getData = async () => {
         const data = await getSingleProduct(id);
-        console.log(data)
-        setImage(data[0].image.url);
         setProductDescription(data[0].description?.trim())
-        setTitle(data[0].name)
+        const moreProducts = await getSpecificVarietyProduct(varietyId);
+        setMoreProducts(moreProducts[0].products)
     }
     useEffect(() => {
         getData();
@@ -62,43 +60,7 @@ export default function ProductDetail(props) {
 
     const [seeFullDescription, setSeeFullDescription] = useState(false);
 
-    const [moreProducts] = useState([
-        {
-            id: 0,
-            productName: 'Black Printed Tshirt',
-            productPrice: 19.49,
-            productImage:
-                'https://images.unsplash.com/photo-1503341504253-dff4815485f1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=60',
-        },
-        {
-            id: 1,
-            productName: 'Black Printed Top (Women)',
-            productPrice: 19.49,
-            productImage:
-                'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=90',
-        },
-        {
-            id: 2,
-            productName: 'White Solid Tshirt',
-            productPrice: 34.99,
-            productImage:
-                'https://images.unsplash.com/photo-1574180566232-aaad1b5b8450?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=60',
-        },
-        {
-            id: 3,
-            productName: 'Black Solid Tshirt',
-            productPrice: 34.99,
-            productImage:
-                'https://images.unsplash.com/photo-1512327428889-607eeb19efe8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=60',
-        },
-        {
-            id: 4,
-            productName: 'Red Top (Women)',
-            productPrice: 44.85,
-            productImage:
-                'https://images.unsplash.com/photo-1456885284447-7dd4bb8720bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=60',
-        },
-    ]);
+    const [moreProducts, setMoreProducts] = useState([]);
 
     useEffect(() => {
         StatusBar.setBarStyle('dark-content');
@@ -218,9 +180,9 @@ export default function ProductDetail(props) {
                         <View style={{ flex: 1, flexDirection: 'row', paddingTop: 10 }}>
                             {moreProducts.map((item, key) => (
                                 <ProductCard
-                                    productImage={item.productImage}
-                                    productName={item.productName}
-                                    productPrice={item.productPrice}
+                                    productImage={item.image?.url}
+                                    productName={item.name}
+                                    productPrice={item.price}
                                     buttonTitle={'Buy'}
                                 />
                             ))}
