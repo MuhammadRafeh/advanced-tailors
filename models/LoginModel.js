@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   Text,
   View,
@@ -17,7 +17,7 @@ const LoginModal = props => {
     setSelected('no');
   };
   return (
-    <View style={{flex: 1}}>
+    <View style={{ flex: 1 }}>
       <View
         style={{
           height: 55,
@@ -34,7 +34,7 @@ const LoginModal = props => {
           }}
           onPress={() => props.navigation.goBack()}>
           <Icon name={'ios-arrow-up-outline'} size={20} color={'#969292'} />
-          <Text style={{color: '#a6a1a1', fontSize: 14.5, letterSpacing: -0.3}}>
+          <Text style={{ color: '#a6a1a1', fontSize: 14.5, letterSpacing: -0.3 }}>
             Go back
           </Text>
         </TouchableOpacity>
@@ -45,15 +45,15 @@ const LoginModal = props => {
           justifyContent: 'flex-end',
           marginHorizontal: 20,
         }}>
-        <Image style={{width: '50%'}} resizeMode={'contain'} />
-        <View style={{marginBottom: 10}}>
-          <Text style={{fontWeight: 'bold', fontSize: 20, color: 'black'}}>
+        <Image style={{ width: '50%' }} resizeMode={'contain'} />
+        <View style={{ marginBottom: 10 }}>
+          <Text style={{ fontWeight: 'bold', fontSize: 20, color: 'black' }}>
             Welcome back
           </Text>
         </View>
-        <View style={{marginBottom: 30}}>
+        <View style={{ marginBottom: 30 }}>
           <Text
-            style={{letterSpacing: -0.2, fontSize: 14, color: 'grey'}}
+            style={{ letterSpacing: -0.2, fontSize: 14, color: 'grey' }}
             adjustsFontSizeToFit={true}
             numberOfLines={1}>
             Sign in to Shop n Stich to pick up exactly where you left off.
@@ -75,7 +75,7 @@ const LoginModal = props => {
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-            <Text style={{color: 'white', fontWeight: 'bold'}}>Facebook</Text>
+            <Text style={{ color: 'white', fontWeight: 'bold' }}>Facebook</Text>
           </View>
           <View
             style={{
@@ -86,17 +86,17 @@ const LoginModal = props => {
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-            <Text style={{color: 'white', fontWeight: 'bold'}}>Google</Text>
+            <Text style={{ color: 'white', fontWeight: 'bold' }}>Google</Text>
           </View>
         </View>
 
-        <View style={{alignItems: 'center', marginBottom: 20}}>
-          <Text style={{letterSpacing: -0.2, fontSize: 14, color: 'grey'}}>
+        <View style={{ alignItems: 'center', marginBottom: 20 }}>
+          <Text style={{ letterSpacing: -0.2, fontSize: 14, color: 'grey' }}>
             or sign in with email
           </Text>
         </View>
 
-        <View style={{marginBottom: 40}}>
+        <View style={{ marginBottom: 40 }}>
           <TextInput
             placeholder="Email or username"
             style={{
@@ -115,7 +115,7 @@ const LoginModal = props => {
           />
         </View>
 
-        <View style={{marginBottom: 30}}>
+        <View style={{ marginBottom: 30 }}>
           <TextInput
             placeholder="Password"
             style={{
@@ -136,12 +136,12 @@ const LoginModal = props => {
           />
         </View>
 
-        <Button label={'Continue'} style={{marginBottom: 20}} />
+        <Button label={'Continue'} style={{ marginBottom: 20 }} />
 
         <TouchableOpacity
-          style={{marginBottom: 24, alignItems: 'flex-end'}}
+          style={{ marginBottom: 24, alignItems: 'flex-end' }}
           onPress={() => props.navigation.navigate('Forgot Password')}>
-          <Text style={{color: 'orange', fontWeight: 'bold'}}>
+          <Text style={{ color: 'orange', fontWeight: 'bold' }}>
             Forgot Password
           </Text>
         </TouchableOpacity>
