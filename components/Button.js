@@ -1,11 +1,11 @@
 import React from 'react';
-import {Text, StyleSheet, TouchableOpacity, Dimensions} from 'react-native';
-const {height} = Dimensions.get('window');
+import { Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+const { height } = Dimensions.get('window');
 
 const Button = props => {
   return (
     <TouchableOpacity
-      style={{...styles.button, ...props.style}}
+      style={{ ...styles.button, ...props.style }}
       onPress={props.onPress}>
       <Text
         style={{
