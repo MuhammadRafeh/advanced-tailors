@@ -16,7 +16,7 @@ export default NumberBadge;
 
 const styles = StyleSheet.create({
     numberBadge: {
-        backgroundColor: '#00008b',
+        backgroundColor: 'red',
         top: 10,
         right: 8,
         width: 14,
@@ -29,6 +29,6 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 10,
         fontFamily: 'bold',
-        color: colors.primary
+        color: '#fff'
     }
 })

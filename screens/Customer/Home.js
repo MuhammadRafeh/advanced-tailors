@@ -1,78 +1,96 @@
-import React, { useEffect, useState } from 'react';
-import { Text, View, ScrollView, StyleSheet } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Text, View, Image, ScrollView, FlatList, StyleSheet } from 'react-native';
+import ProductCard from '../../components/ProductCard';
 import { gql } from 'graphql-request';
 import graphcms from '../../graphCMS/graphCMS';
+import Badge from '../../components/Badge';
 
 const QUERY = gql`
 query MyQuery {
-  categories{
+  varieties {
     id
     name
-    collections {
+    products {
       id
-      name
-      varieties {
+      image {
         id
-        name
-        products {
-          id
-          name
-          price
-          description
-          excerpt
-        }
+        url
       }
+      name
+      price
     }
   }
 }`;
 
+
 const Home = props => {
-  const [categories, setCategories] = useState([]);
+  const [varieties, setVarieties] = useState([]);
   const getData = async () => {
-    const { categories } = await graphcms.request(QUERY);
-    // console.log(data.categories[0].collections[0].varieties, 'dara')
-    console.log(categories, 'dara')
-    setCategories(categories);
+    const { varieties } = await graphcms.request(QUERY);
+    setVarieties(varieties)
   };
 
   useEffect(() => {
     getData();
   }, []);
   return (
-    <View style={styles.screen}>
-      {
-        categories.map(category => (
-          <View key={category.name} style={{ padding: 10 }}>
-            <View>
-              <Text style={{color: 'black'}}>
-                {category.name}
-              </Text>
-            </View>
-
-            <View>
-              <ScrollView horizontal>
+    <View style={{ flex: 1 }}>
+      <FlatList
+        contentContainerStyle={{ paddingBottom: 26 }}
+        data={varieties}
+        renderItem={({ item }) => (
+          <View key={item.id} style={styles.row}>
+            <Text numberOfLines={1} adjustsFontSizeToFit={true} style={styles.title}>
+              {item.name.trim()}
+            </Text>
+            {
+              item.products.length == 0 && (
+                <View style={{ alignItems: 'center', position: 'absolute', top: 34, left: '40%' }}>
+                  <Badge text={'Coming Soon'} />
+                </View>
+              )
+            }
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingLeft: 11 }}>
+              <View style={{ flex: 1, flexDirection: 'row', paddingTop: 10 }}>
                 {
-                  category.collections.map(item => {
-                    console.log(item, 'asd')
-                    return (
-                      < View />
-                    )
-                  })
+                  item.products.map(product => (
+                    <ProductCard
+                      key={product.id}
+                      productImage={product?.image?.url}
+                      productName={product.name}
+                      productPrice={product.price}
+                      buttonTitle={'Buy'}
+                      onPress={() => {
+                        props.navigation.navigate('ProductDetail', {
+                          id: product.id,
+                          varietyId: item.id,
+                          imageURL: product?.image?.url,
+                          name: product.name,
+                          price: product.price,
+                          products: item.products
+                        })
+                      }}
+                    />
+                  ))
                 }
-              </ScrollView>
-            </View>
-
+              </View>
+            </ScrollView>
           </View>
-        ))
-      }
+        )}
+      />
     </View>
   )
-};
-
-export default Home;
+}
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1
+  title: {
+    fontFamily: '1',
+    marginLeft: 20,
+    fontSize: 20
+  },
+  row: {
+    marginVertical: 10
   }
 })
+
+export default Home;

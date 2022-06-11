@@ -13,7 +13,7 @@ import Steps from '../components/Steps';
 
 const BecomeTailor = props => {
   return (
-    <View style={{flex: 1}}>
+    <View style={{ flex: 1 }}>
       <View
         style={{
           height: 55,
@@ -30,7 +30,7 @@ const BecomeTailor = props => {
           }}
           onPress={() => props.navigation.goBack()}>
           <Icon name={'ios-arrow-up-outline'} size={20} color={'#969292'} />
-          <Text style={{color: '#a6a1a1', fontSize: 14.5, letterSpacing: -0.3}}>
+          <Text style={{ color: '#a6a1a1', fontSize: 14.5, letterSpacing: -0.3 }}>
             Go back
           </Text>
         </TouchableOpacity>
@@ -43,14 +43,14 @@ const BecomeTailor = props => {
           marginHorizontal: 20,
         }}>
         <Image />
-        <View style={{marginVertical: 10}}>
-          <Text style={{fontWeight: 'bold', fontSize: 20, color: 'black'}}>
+        <View style={{ marginVertical: 10 }}>
+          <Text style={{ fontWeight: 'bold', fontSize: 20, color: 'black' }}>
             Use your stich skills
           </Text>
         </View>
-        <View style={{marginBottom: 50}}>
+        <View style={{ marginBottom: 50 }}>
           <Text
-            style={{letterSpacing: -0.2, fontSize: 14, color: 'grey'}}
+            style={{ letterSpacing: -0.2, fontSize: 14, color: 'grey' }}
             adjustsFontSizeToFit={true}
             numberOfLines={1}>
             We'll get you the clients. We'll make earning easy.
@@ -81,9 +81,9 @@ const BecomeTailor = props => {
 
         <Button
           label={'Continue'}
-          style={{marginTop: 40}}
+          style={{ marginTop: 40 }}
           onPress={() =>
-            props.navigation.navigate('SignupModel', {fromSeller: true})
+            props.navigation.navigate('SignupModel', { fromSeller: true })
           }
         />
       </ScrollView>
